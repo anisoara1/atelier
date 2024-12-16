@@ -1,0 +1,39 @@
+/* src/components/TopDishes.css */
+
+@import "../styles/variables.css";
+
+.top-dishes {
+  padding: var(--section-padding);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.dishes-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.dish-card {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  width: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dish-card h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.dish-card p {
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
