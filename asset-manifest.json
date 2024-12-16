@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/atelier/static/css/main.c47d7d6f.css",
+    "main.js": "/atelier/static/js/main.3d735535.js",
+    "static/js/488.519d3dc6.chunk.js": "/atelier/static/js/488.519d3dc6.chunk.js",
+    "static/media/fresh-baked-donuts.jpg": "/atelier/static/media/fresh-baked-donuts.f608f9e24905bade9b3a.jpg",
+    "static/media/logo.jpg": "/atelier/static/media/logo.51b275d3a8512abc170f.jpg",
+    "index.html": "/atelier/index.html",
+    "main.c47d7d6f.css.map": "/atelier/static/css/main.c47d7d6f.css.map",
+    "main.3d735535.js.map": "/atelier/static/js/main.3d735535.js.map",
+    "488.519d3dc6.chunk.js.map": "/atelier/static/js/488.519d3dc6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c47d7d6f.css",
+    "static/js/main.3d735535.js"
+  ]
+}
