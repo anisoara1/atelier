@@ -1,8 +1,18 @@
-import "./Header.css";
+import React, { useEffect, useState } from "react";
+import "./NavBar.css";
 import config from "../config";
 import logo from "../assets/logo.jpg"; // Import image
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Header = () => {
+export const NavBar = () => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const [authState, setAuthState] = useState(isAuthenticated);
+
+  useEffect(() => {
+    setAuthState(isAuthenticated);
+  }, [isAuthenticated]);
+
   return (
     <header className="header">
       <div className="container">
@@ -29,9 +39,19 @@ const Header = () => {
           </ul>
         </nav>
         <button className="book-table-button">Cosul tau</button>
+        <ul>
+          {!authState && (
+            <li>
+              <Link to="/login">Admin</Link>
+            </li>
+          )}
+          {authState && (
+            <li>
+              <Link to="/home">Home</Link>
+            </li>
+          )}
+        </ul>
       </div>
     </header>
   );
 };
-
-export default Header;

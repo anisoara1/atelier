@@ -1,7 +1,7 @@
 // src/components/AboutUs.js
 import React from "react";
 import config from "../config";
-import "./AboutUs.css";
+import "./AboutUs.module.css";
 
 const AboutUs = () => (
   <section className="about-us">
