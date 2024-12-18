@@ -8,7 +8,9 @@ export const AdminPage = () => {
     name: "",
     price: "",
     description: "",
+    image: null,
   });
+  const [editingProduct, setEditingProduct] = useState(null);
 
   if (!isAuthenticated) {
     return <div>Nu aveți permisiunea de a accesa această pagină.</div>;
@@ -19,10 +21,32 @@ export const AdminPage = () => {
     setNewProduct({ ...newProduct, [name]: value });
   };
 
+  const handleImageChange = (e) => {
+    setNewProduct({ ...newProduct, image: e.target.files[0] });
+  };
+
   const handleAddProduct = (e) => {
     e.preventDefault();
-    setProducts([...products, newProduct]);
-    setNewProduct({ name: "", price: "", description: "" });
+    if (editingProduct !== null) {
+      const updatedProducts = products.map((product, index) =>
+        index === editingProduct ? newProduct : product
+      );
+      setProducts(updatedProducts);
+      setEditingProduct(null);
+    } else {
+      setProducts([...products, newProduct]);
+    }
+    setNewProduct({ name: "", price: "", description: "", image: null });
+  };
+
+  const handleEditProduct = (index) => {
+    setEditingProduct(index);
+    setNewProduct(products[index]);
+  };
+
+  const handleDeleteProduct = (index) => {
+    const updatedProducts = products.filter((_, i) => i !== index);
+    setProducts(updatedProducts);
   };
 
   return (
@@ -50,13 +74,25 @@ export const AdminPage = () => {
           value={newProduct.description}
           onChange={handleInputChange}
         />
-        <button type="submit">Adaugă produs</button>
+        <input type="file" name="image" onChange={handleImageChange} />
+        <button type="submit">
+          {editingProduct !== null ? "Salvează modificările" : "Adaugă produs"}
+        </button>
       </form>
       <h2>Produse existente</h2>
       <ul>
         {products.map((product, index) => (
           <li key={index}>
             {product.name} - {product.price} - {product.description}
+            {product.image && (
+              <img
+                src={URL.createObjectURL(product.image)}
+                alt={product.name}
+                style={{ width: "100px", height: "100px" }}
+              />
+            )}
+            <button onClick={() => handleEditProduct(index)}>Editează</button>
+            <button onClick={() => handleDeleteProduct(index)}>Șterge</button>
           </li>
         ))}
       </ul>

@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+import { Link, useLocation } from "react-router-dom";
 import "./NavBar.css";
 import config from "../config";
-import logo from "../assets/logo.jpg"; // Import image
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import logo from "../assets/logo.jpg";
 
 export const NavBar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const [authState, setAuthState] = useState(isAuthenticated);
-
-  useEffect(() => {
-    setAuthState(isAuthenticated);
-  }, [isAuthenticated]);
+  const location = useLocation();
 
   return (
     <header className="header">
@@ -20,7 +16,7 @@ export const NavBar = () => {
           <div className="logo">
             <img src={logo} alt="Logo" />
           </div>
-          <h2>{config.siteName}</h2> {/* Display the site name */}
+          <h2>{config.siteName}</h2>
         </div>
         <nav>
           <ul className="nav-list">
@@ -40,14 +36,22 @@ export const NavBar = () => {
         </nav>
         <button className="book-table-button">Cosul tau</button>
         <ul>
-          {!authState && (
-            <li>
-              <Link to="/login">Admin</Link>
-            </li>
-          )}
-          {authState && (
+          {location.pathname === "/login" ? (
             <li>
               <Link to="/home">Home</Link>
+            </li>
+          ) : (
+            !isAuthenticated && (
+              <li>
+                <Link to="/login">Admin</Link>
+              </li>
+            )
+          )}
+          {isAuthenticated && location.pathname !== "/login" && (
+            <li>
+              <Link to={location.pathname === "/admin" ? "/home" : "/admin"}>
+                {location.pathname === "/admin" ? "Home" : "Admin"}
+              </Link>
             </li>
           )}
         </ul>

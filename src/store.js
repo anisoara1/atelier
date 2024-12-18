@@ -1,6 +1,22 @@
-import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./rootReducer"; // Adjust the path to your root reducer
+import { configureStore, createSlice } from "@reduxjs/toolkit";
+
+const authSlice = createSlice({
+  name: "auth",
+  initialState: { isAuthenticated: false },
+  reducers: {
+    loginSuccess: (state) => {
+      state.isAuthenticated = true;
+    },
+    logout: (state) => {
+      state.isAuthenticated = false;
+    },
+  },
+});
+
+export const { loginSuccess, logout } = authSlice.actions;
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    auth: authSlice.reducer,
+  },
 });

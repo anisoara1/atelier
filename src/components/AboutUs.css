@@ -1,0 +1,47 @@
+.about-us {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.about-us-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.image-container {
+  width: 507px;
+  height: 564px;
+  flex: 1; /* Take up 50% of space */
+  margin-right: 50px; /* Space between image and text */
+  border-top-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.about-us-image {
+  width: 507px;
+  height: 564px;
+  object-fit: cover;
+  border-top-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+
+.text-container {
+  flex: 1; /* Take up 50% of space */
+  text-align: left;
+}
+
+.text-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.text-container p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}

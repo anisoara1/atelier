@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { loginSuccess } from "../../store";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -10,9 +11,8 @@ const LoginPage = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Check for login with updated credentials
-    if (username === "mimi" && password === "mimi") {
-      dispatch({ type: "LOGIN_SUCCESS" });
+    if (username === "mimi" && password === "gogosi") {
+      dispatch(loginSuccess());
       navigate("/admin");
     }
   };
