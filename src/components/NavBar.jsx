@@ -38,7 +38,7 @@ export const NavBar = () => {
         <ul>
           {location.pathname === "/login" ? (
             <li>
-              <Link to="/home">Home</Link>
+              <Link to="/atelier">Home</Link>
             </li>
           ) : (
             !isAuthenticated && (
@@ -49,7 +49,7 @@ export const NavBar = () => {
           )}
           {isAuthenticated && location.pathname !== "/login" && (
             <li>
-              <Link to={location.pathname === "/admin" ? "/home" : "/admin"}>
+              <Link to={location.pathname === "/admin" ? "/atelier" : "/admin"}>
                 {location.pathname === "/admin" ? "Home" : "Admin"}
               </Link>
             </li>
