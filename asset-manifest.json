@@ -1,19 +1,20 @@
 {
   "files": {
-    "main.css": "/atelier/static/css/main.bb91ba42.css",
-    "main.js": "/atelier/static/js/main.c6356207.js",
+    "main.css": "/atelier/static/css/main.2001ce61.css",
+    "main.js": "/atelier/static/js/main.c68f3bfc.js",
     "static/js/488.519d3dc6.chunk.js": "/atelier/static/js/488.519d3dc6.chunk.js",
     "static/media/fresh-baked-donuts.jpg": "/atelier/static/media/fresh-baked-donuts.f608f9e24905bade9b3a.jpg",
     "static/media/logo.jpg": "/atelier/static/media/logo.51b275d3a8512abc170f.jpg",
+    "static/media/Vector 1.png": "/atelier/static/media/Vector 1.34c217c5faa19e296571.png",
     "static/media/atelier.jpg": "/atelier/static/media/atelier.fae06e61bb8ff06cf6da.jpg",
-    "static/media/icons.svg": "/atelier/static/media/icons.860789db3318b33d86c2.svg",
+    "static/media/icons.svg": "/atelier/static/media/icons.382fe0840f712382fbe2.svg",
     "index.html": "/atelier/index.html",
-    "main.bb91ba42.css.map": "/atelier/static/css/main.bb91ba42.css.map",
-    "main.c6356207.js.map": "/atelier/static/js/main.c6356207.js.map",
+    "main.2001ce61.css.map": "/atelier/static/css/main.2001ce61.css.map",
+    "main.c68f3bfc.js.map": "/atelier/static/js/main.c68f3bfc.js.map",
     "488.519d3dc6.chunk.js.map": "/atelier/static/js/488.519d3dc6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb91ba42.css",
-    "static/js/main.c6356207.js"
+    "static/css/main.2001ce61.css",
+    "static/js/main.c68f3bfc.js"
   ]
 }
