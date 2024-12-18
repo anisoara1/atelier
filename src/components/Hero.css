@@ -1,5 +1,7 @@
 .hero {
+  position: relative; /* Allows positioning of child elements */
   display: flex;
+  align-items: center;
   justify-content: space-between;
   align-items: center;
   max-width: 1200px;
@@ -26,7 +28,7 @@
   margin: 0;
 }
 
-.hero p {
+.hero-content p {
   font-family: Inter;
   font-size: 16px;
   font-weight: 400;
@@ -47,6 +49,7 @@
 }
 
 .image-container {
+  position: relative; /* Enable positioning of the vector image */
   display: flex;
   gap: 20px;
 }
@@ -101,4 +104,15 @@
 
 .menu-button:hover {
   background-color: rgb(62, 62, 62);
+}
+
+.image-container .vector {
+  position: absolute;
+  z-index: 1; /* Send the vector image behind the other images */
+  top: 0;
+  left: 0;
+  width: 100%; /* Adjust to fit the desired area */
+  height: auto; /* Maintain aspect ratio */
+  opacity: 0.5; /* Optional: Add transparency for effect */
+  pointer-events: none;
 }
