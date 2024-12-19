@@ -1,33 +1,41 @@
 import React from "react";
 import "./Footer.css";
+import logo from "../assets/logo.jpg";
 
 const Footer = () => (
   <footer className="footer">
     <div className="footer-logo">
-      <img src="logo.png" alt="Logo" />
-    </div>
-    <div className="footer-about">
-      <p>Delivering culinary excellence since 1998</p>
+      <img src={logo} alt="Logo" />
     </div>
     <div className="footer-contact">
-      <p>Contact us: contact@example.com</p>
+      <p>Address: 123 Food Street, Culinary City, FL 12345</p>
+      <p>Phone: (123) 456-7890</p>
+      <p>Email: mimi@gmail.com</p>
+      <p>
+        <a
+          href="https://maps.google.com/?q=123+Food+Street,+Culinary+City,+FL+12345"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Find us on Google Maps
+        </a>
+      </p>
     </div>
     <div className="footer-social">
-      <a href="#facebook">
-        <i className="fab fa-facebook-f">Facebook</i>
+      <a
+        href="https://www.facebook.com/yourpage"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i className="fab fa-facebook-f"></i> Facebook
       </a>
-      <a href="#twitter">
-        <i className="fab fa-twitter">Twitter</i>
+      <a
+        href="https://www.instagram.com/yourpage"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <i className="fab fa-instagram"></i> Instagram
       </a>
-      <a href="#instagram">
-        <i className="fab fa-instagram">Instagram</i>
-      </a>
-    </div>
-    <div className="footer-newsletter">
-      <form>
-        <input type="email" placeholder="Subscribe to our newsletter" />
-        <button type="submit">Subscribe</button>
-      </form>
     </div>
   </footer>
 );
