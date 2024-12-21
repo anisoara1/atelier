@@ -12,7 +12,7 @@ const TopDishes = () => {
   const dishes = [
     {
       name: "Gogoși cu ciocolată",
-      description: "Delicioase gogoși umplute cu ciocolată.",
+      description: "Delicioase cu ciocolată.",
       price: "10 lei",
       image: "path/to/chocolate-donut.jpg",
     },
@@ -24,61 +24,61 @@ const TopDishes = () => {
     },
     {
       name: "Gogoși simple",
-      description: "Gogoși clasice, perfecte pentru orice ocazie.",
+      description: "Gogoși clasice.",
       price: "6 lei",
       image: "path/to/plain-donut.jpg",
     },
     {
       name: "Gogoși regale",
-      description: "Gogoși de lux, perfecte pentru orice ocazie.",
+      description: "Gogoși de lux.",
       price: "12 lei",
       image: "path/to/plain-donut.jpg",
     },
     {
       name: "Gogoși simple",
-      description: "Gogoși clasice, perfecte pentru orice ocazie.",
+      description: "Gogoși clasice.",
       price: "6 lei",
       image: "path/to/plain-donut.jpg",
     },
     {
       name: "Gogoși regale",
-      description: "Gogoși de lux, perfecte pentru orice ocazie.",
+      description: "Gogoși de lux cu martipan.",
       price: "12 lei",
       image: "path/to/plain-donut.jpg",
     },
     {
       name: "Gogoși cu ciocolată",
-      description: "Delicioase gogoși umplute cu ciocolată.",
+      description: "Delicioase gogoși cu ciocolată.",
       price: "10 lei",
       image: "path/to/chocolate-donut.jpg",
     },
     {
       name: "Gogoși cu gem",
-      description: "Gogoși pufoase cu gem de fructe.",
+      description: "Gogoși cu gem de fructe.",
       price: "8 lei",
       image: "path/to/jam-donut.jpg",
     },
     {
       name: "Gogoși simple",
-      description: "Gogoși clasice, perfecte pentru orice ocazie.",
+      description: "Gogoși clasice.",
       price: "6 lei",
       image: "path/to/plain-donut.jpg",
     },
     {
       name: "Gogoși regale",
-      description: "Gogoși de lux, perfecte pentru orice ocazie.",
+      description: "Gogoși de luxe.",
       price: "12 lei",
       image: "path/to/plain-donut.jpg",
     },
     {
       name: "Gogoși simple",
-      description: "Gogoși clasice, perfecte pentru orice ocazie.",
+      description: "Gogoși clasice.",
       price: "6 lei",
       image: "path/to/plain-donut.jpg",
     },
     {
       name: "Gogoși regale",
-      description: "Gogoși de lux, perfecte pentru orice ocazie.",
+      description: "Gogoși de lux.",
       price: "12 lei",
       image: "path/to/plain-donut.jpg",
     },
@@ -112,7 +112,7 @@ const TopDishes = () => {
                 <img src={dish.image} alt={dish.name} className="dish-image" />
                 <div className="overlay">
                   <h3>{dish.name}</h3>
-                  <p>{dish.description}</p>
+                  <h5>{dish.description}</h5>
                   <strong>{dish.price}</strong>
                 </div>
               </div>

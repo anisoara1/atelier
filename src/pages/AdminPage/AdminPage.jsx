@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+import "./AdminPage.css";
 
 export const AdminPage = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -13,7 +14,11 @@ export const AdminPage = () => {
   const [editingProduct, setEditingProduct] = useState(null);
 
   if (!isAuthenticated) {
-    return <div>Nu aveți permisiunea de a accesa această pagină.</div>;
+    return (
+      <div className="error-message">
+        Nu aveți permisiunea de a accesa această pagină.
+      </div>
+    );
   }
 
   const handleInputChange = (e) => {
@@ -50,9 +55,9 @@ export const AdminPage = () => {
   };
 
   return (
-    <div>
+    <div className="admin-page">
       <h1>Admin Dashboard</h1>
-      <form onSubmit={handleAddProduct}>
+      <form className="product-form" onSubmit={handleAddProduct}>
         <input
           type="text"
           name="name"
@@ -67,32 +72,37 @@ export const AdminPage = () => {
           value={newProduct.price}
           onChange={handleInputChange}
         />
-        <input
-          type="text"
+        <textarea
           name="description"
           placeholder="Descriere"
           value={newProduct.description}
           onChange={handleInputChange}
-        />
+        ></textarea>
         <input type="file" name="image" onChange={handleImageChange} />
         <button type="submit">
           {editingProduct !== null ? "Salvează modificările" : "Adaugă produs"}
         </button>
       </form>
       <h2>Produse existente</h2>
-      <ul>
+      <ul className="product-list">
         {products.map((product, index) => (
-          <li key={index}>
-            {product.name} - {product.price} - {product.description}
+          <li className="product-item" key={index}>
+            <div className="product-info">
+              <p>{product.name}</p>
+              <p>{product.price} lei</p>
+              <p>{product.description}</p>
+            </div>
             {product.image && (
               <img
                 src={URL.createObjectURL(product.image)}
                 alt={product.name}
-                style={{ width: "100px", height: "100px" }}
+                className="product-image"
               />
             )}
-            <button onClick={() => handleEditProduct(index)}>Editează</button>
-            <button onClick={() => handleDeleteProduct(index)}>Șterge</button>
+            <div className="product-actions">
+              <button onClick={() => handleEditProduct(index)}>Editează</button>
+              <button onClick={() => handleDeleteProduct(index)}>Șterge</button>
+            </div>
           </li>
         ))}
       </ul>

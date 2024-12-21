@@ -1,5 +1,3 @@
-/* src/components/Header.css */
-
 @import "../styles/variables.css";
 
 .header {
@@ -24,19 +22,14 @@
   align-items: center;
 }
 
-.logo {
-  width: 50px;
-  height: 50px;
-  overflow: hidden;
-  position: relative;
-  border-radius: 50%;
+.nav-logo {
+  margin-right: 10px;
 }
 
-.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.nav-logo img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
 }
 
 .nav-list {
@@ -49,6 +42,7 @@
   color: var(--text-color);
   text-decoration: none;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .nav-list li a:hover {
@@ -56,15 +50,76 @@
 }
 
 .book-table-button {
+  max-width: 120px;
+  max-height: 40px;
   background-color: var(--button-background-color);
   color: var(--button-color);
   padding: var(--button-padding);
   border: var(--button-border);
   border-radius: var(--button-border-radius);
   box-shadow: var(--button-box-shadow);
+  font-size: 16px;
   cursor: var(--button-cursor);
+  transition: background-color 0.3s ease;
 }
 
 .book-table-button:hover {
-  background-color: #e69500; /* Portocaliu puțin mai închis la hover */
+  background-color: darkorange;
+  transform: scale(1.05);
+}
+
+/* Responsive Styling */
+@media (max-width: 1024px) {
+  /* Tablet Screens */
+  .container {
+    flex-wrap: wrap; /* Wrap elements */
+    justify-content: center; /* Center elements on smaller screens */
+    text-align: center;
+  }
+
+  .site-name {
+    margin-bottom: 1rem; /* Add spacing below logo and site name */
+  }
+
+  .nav-list {
+    gap: 0.8rem; /* Adjust spacing between links */
+  }
+
+  .nav-list li a {
+    font-size: 14px; /* Slightly smaller font for tablets */
+  }
+
+  .book-table-button {
+    padding: 8px 16px;
+    font-size: 14px; /* Adjust button size for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile Screens */
+  .container {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-logo img {
+    width: 60px; /* Smaller logo size */
+    height: 60px;
+  }
+
+  .nav-list {
+    flex-direction: column; /* Stack navigation links */
+    gap: 0.5rem;
+  }
+
+  .nav-list li a {
+    font-size: 14px; /* Adjust font size */
+  }
+
+  .book-table-button {
+    width: 100%; /* Full width for smaller screens */
+    font-size: 14px;
+    padding: 10px;
+  }
 }

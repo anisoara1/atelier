@@ -13,7 +13,7 @@ export const NavBar = () => {
     <header className="header">
       <div className="container">
         <div className="site-name">
-          <div className="logo">
+          <div className="nav-logo">
             <img src={logo} alt="Logo" />
           </div>
           <h2>{config.siteName}</h2>

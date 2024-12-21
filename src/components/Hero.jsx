@@ -12,7 +12,7 @@ const Hero = () => (
       <p>Descopera si comanda mancarea noastra delicioasa!</p>
       <div className="buttons">
         <button className="menu-button">Meniu</button>
-        <button className="order-button">Comanda acum</button>
+        <button className="order-button">Comanda</button>
       </div>
     </div>
     <div className="image-container">

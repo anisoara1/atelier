@@ -16,18 +16,19 @@
 
 .dish-card {
   background: rgba(0, 0, 0, 0.7);
-  width: 298px;
-  height: 298px;
+  width: auto;
+  height: auto;
   border-top-left-radius: 50px;
   border-bottom-right-radius: 50px;
   overflow: hidden;
   position: relative;
+  margin: 0 auto; /* Center on small screens */
 }
 
 .dish-image {
   background-color: rgb(105, 89, 89);
   width: 100%;
-  height: 100%;
+  height: 200px; /* Fixed height for consistency */
   object-fit: cover;
 }
 
@@ -39,12 +40,23 @@
   width: 100%;
   padding: 10px;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .overlay h3 {
   margin: 0;
+  font-size: 16px;
 }
 
+.overaly h5 {
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 10px;
+  margin: 0;
+}
 .overlay .price {
   font-weight: bold;
 }
@@ -62,28 +74,23 @@
   transform: translateY(-50%);
   font-size: 40px;
   color: darkorange;
-  background-size: contain;
   cursor: pointer;
 }
 
 /* Position Next Arrow outside the slider */
 .swiper-button-next {
-  right: -50px; /* Move to the right outside */
-  background: url("../assets/icons.svg#icon-circle-right") no-repeat center
-    center;
+  right: -30px; /* Adjusted for smaller screens */
 }
 
 /* Position Prev Arrow outside the slider */
 .swiper-button-prev {
-  left: -50px; /* Move to the left outside */
-  background: url("../assets/icons.svg#icon-circle-left") no-repeat center
-    center;
+  left: -30px;
 }
 
 /* Pagination bullets - Positioned outside the slider */
 .swiper-pagination {
   position: relative !important;
-  bottom: -30px; /* Move bullets below the slider */
+  bottom: -20px; /* Move bullets below the slider */
   margin-top: 20px;
 }
 
@@ -91,11 +98,95 @@
   background-color: orange !important;
   width: 10px;
   height: 10px;
-  margin: 0 5px; /* Adjust spacing */
+  margin: 0 5px;
   opacity: 0.7;
 }
 
 .swiper-pagination-bullet-active {
   background-color: darkorange !important;
   opacity: 1;
+}
+
+/* Media Queries */
+
+/* For tablets and medium screens (768px - 1024px) */
+@media (max-width: 1024px) {
+  .dishes-container {
+    padding: 0 20px;
+  }
+
+  .dish-card {
+    max-width: 220px; /* Reduce card size */
+  }
+
+  .dish-image {
+    height: 150px; /* Adjust image height */
+  }
+
+  .overlay h3 {
+    font-size: 14px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    font-size: 30px; /* Reduce arrow size */
+    right: -20px;
+    left: -20px;
+  }
+}
+
+/* For small screens (480px - 768px) */
+@media (max-width: 768px) {
+  .dishes-container {
+    padding: 0 10px;
+  }
+
+  .dish-card {
+    max-width: 180px; /* Smaller card size for small screens */
+  }
+
+  .dish-image {
+    height: 120px; /* Smaller image height */
+  }
+
+  .overlay h3 {
+    font-size: 12px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    font-size: 25px; /* Smaller arrow size */
+    right: -15px;
+    left: -15px;
+  }
+}
+
+/* For extra small screens (max-width: 480px) */
+@media (max-width: 480px) {
+  .dishes-container {
+    padding: 0 5px;
+  }
+
+  .dish-card {
+    max-width: 150px; /* Further reduce card size */
+  }
+
+  .dish-image {
+    height: 100px; /* Further reduce image height */
+  }
+
+  .overlay h3 {
+    font-size: 10px; /* Smaller text size */
+  }
+
+  .swiper-pagination {
+    bottom: -10px; /* Adjust bullet positioning */
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    font-size: 20px; /* Adjust arrow size */
+    right: -10px;
+    left: -10px;
+  }
 }

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import DailyMenu from "./DailyMenu";
+import DailyMenuCard from "./DailyMenuCard";
 import "./DailyList.css";
 
 const dailyData = [
   {
     title: "Menu 1",
-    description: "A delicious menu with fresh ingredients.",
+    description:
+      "A delicious menu with fresh ingredients.A tasty and hearty menu for any time of the day.",
     price: "25 lei",
     image: "path/to/menu1.jpg",
   },
@@ -38,7 +39,7 @@ const DailyList = () => {
   return (
     <div className="daily-list">
       <button className="view-menu-button" onClick={handleOpenModal}>
-        View Daily Menus
+        Meniul zilei
       </button>
 
       {isModalOpen && (
@@ -49,7 +50,7 @@ const DailyList = () => {
             </button>
             <div className="menu-list">
               {dailyData.map((menu, index) => (
-                <DailyMenu key={index} {...menu} />
+                <DailyMenuCard key={index} {...menu} />
               ))}
             </div>
           </div>
