@@ -1,5 +1,3 @@
-@import "../styles/variables.css";
-
 .menu {
   padding: var(--section-padding);
   background-color: var(--secondary-color);
@@ -140,11 +138,11 @@
 /* Responsive Design */
 @media (max-width: 768px) {
   .menu-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr; /* Maintain two columns on tablets */
   }
 
   .menu-item {
-    max-width: 100%; /* Allow full width for smaller screens */
+    max-width: 100%;
     flex-direction: column;
   }
 
@@ -163,7 +161,7 @@
 
 @media (max-width: 480px) {
   .menu-container {
-    grid-template-columns: 1fr; /* Single column for very small screens */
+    grid-template-columns: 1fr; /* Single column for mobile screens */
   }
 
   .menu-item {
