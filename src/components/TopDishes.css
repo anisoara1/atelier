@@ -1,5 +1,3 @@
-@import "../styles/variables.css";
-
 .top-dishes {
   padding: var(--section-padding);
   background-color: var(--secondary-color);
@@ -11,52 +9,55 @@
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  position: relative;
+  text-align: center;
+}
+
+.swiper-container {
+  width: 100%;
 }
 
 .dish-card {
-  background: rgba(0, 0, 0, 0.7);
-  width: auto;
-  height: auto;
-  border-top-left-radius: 50px;
-  border-bottom-right-radius: 50px;
+  width: 298px;
+  height: 298px;
+  border-radius: 20px;
   overflow: hidden;
-  position: relative;
-  margin: 0 auto; /* Center on small screens */
+  margin: 0 auto;
 }
 
 .dish-image {
-  background-color: rgb(105, 89, 89);
   width: 100%;
-  height: 200px; /* Fixed height for consistency */
-  object-fit: cover;
+  height: auto;
+  display: block;
+}
+picture {
+  display: block;
 }
 
 .overlay {
   position: absolute;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
   width: 100%;
-  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
   text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  padding: 10px;
 }
 
 .overlay h3 {
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
+  padding: 0;
 }
 
-.overaly h5 {
+.overlay-text {
   font-family: "Inter", sans-serif;
-  font-weight: 300;
-  font-size: 12px;
-  line-height: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
   margin: 0;
+  padding: 10px 0;
 }
+
 .overlay .price {
   font-weight: bold;
 }
@@ -65,32 +66,28 @@
   position: relative;
 }
 
-/* Adjusted Arrow CSS */
 .swiper-button-next,
 .swiper-button-prev {
   z-index: 100;
   position: absolute;
-  top: 50%; /* Center arrows vertically */
+  top: 50%;
   transform: translateY(-50%);
   font-size: 40px;
   color: darkorange;
   cursor: pointer;
 }
 
-/* Position Next Arrow outside the slider */
 .swiper-button-next {
-  right: -30px; /* Adjusted for smaller screens */
+  right: -30px;
 }
 
-/* Position Prev Arrow outside the slider */
 .swiper-button-prev {
   left: -30px;
 }
 
-/* Pagination bullets - Positioned outside the slider */
 .swiper-pagination {
-  position: relative !important;
-  bottom: -20px; /* Move bullets below the slider */
+  position: relative;
+  bottom: -20px;
   margin-top: 20px;
 }
 
@@ -112,24 +109,17 @@
 /* For tablets and medium screens (768px - 1024px) */
 @media (max-width: 1024px) {
   .dishes-container {
-    padding: 0 20px;
+    gap: 15px; /* Reduce spacing between cards */
   }
 
   .dish-card {
-    max-width: 220px; /* Reduce card size */
-  }
-
-  .dish-image {
-    height: 150px; /* Adjust image height */
-  }
-
-  .overlay h3 {
-    font-size: 14px;
+    width: 298px; /* Maintain original size */
+    height: 298px;
   }
 
   .swiper-button-next,
   .swiper-button-prev {
-    font-size: 30px; /* Reduce arrow size */
+    font-size: 30px;
     right: -20px;
     left: -20px;
   }
@@ -138,24 +128,17 @@
 /* For small screens (480px - 768px) */
 @media (max-width: 768px) {
   .dishes-container {
-    padding: 0 10px;
+    gap: 10px; /* Further reduce spacing */
   }
 
   .dish-card {
-    max-width: 180px; /* Smaller card size for small screens */
-  }
-
-  .dish-image {
-    height: 120px; /* Smaller image height */
-  }
-
-  .overlay h3 {
-    font-size: 12px;
+    width: 208px; /* Maintain original size */
+    height: 208px;
   }
 
   .swiper-button-next,
   .swiper-button-prev {
-    font-size: 25px; /* Smaller arrow size */
+    font-size: 25px;
     right: -15px;
     left: -15px;
   }
@@ -164,28 +147,17 @@
 /* For extra small screens (max-width: 480px) */
 @media (max-width: 480px) {
   .dishes-container {
-    padding: 0 5px;
+    gap: 5px; /* Minimal spacing for small screens */
   }
 
   .dish-card {
-    max-width: 150px; /* Further reduce card size */
-  }
-
-  .dish-image {
-    height: 100px; /* Further reduce image height */
-  }
-
-  .overlay h3 {
-    font-size: 10px; /* Smaller text size */
-  }
-
-  .swiper-pagination {
-    bottom: -10px; /* Adjust bullet positioning */
+    width: 128px; /* Maintain original size */
+    height: 128px;
   }
 
   .swiper-button-next,
   .swiper-button-prev {
-    font-size: 20px; /* Adjust arrow size */
+    font-size: 20px;
     right: -10px;
     left: -10px;
   }

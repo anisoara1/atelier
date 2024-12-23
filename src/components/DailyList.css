@@ -36,23 +36,29 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5); /* Fundal transparent */
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 1000;
+  align-items: center;
+  z-index: 1; /* Sub butonul de închidere */
 }
 
 .modal-content {
   position: relative;
   background: white;
+  border-radius: 10px;
   padding: 20px;
-  border-radius: 8px;
-  width: 90%; /* Responsive width */
-  max-width: 600px;
-  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  overflow-y: auto; /* Scroll if content overflows */
-  max-height: 90vh; /* Prevents modal from exceeding viewport height */
+  width: 90%;
+  max-width: 600px; /* Dimensiune maximă */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  overflow-y: auto; /* Permite derularea dacă conținutul depășește înălțimea */
+  max-height: 90vh; /* Limitează înălțimea pentru dispozitive mici */
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column; /* Cardurile sunt afișate unul sub celălalt */
+  gap: 15px; /* Spațiere între carduri */
 }
 
 .close-button {
@@ -62,80 +68,22 @@
   background: transparent;
   border: none;
   font-size: 24px;
-  font-weight: bold;
-  color: black;
   cursor: pointer;
+  z-index: 2; /* Deasupra conținutului */
 }
 
-.menu-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+.close-button:hover {
+  color: rgb(182, 87, 9);
 }
 
-.menu-cards {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap; /* Allows items to wrap to the next row */
-  justify-content: center;
-  margin-top: 20px;
-}
-
-/* Media Queries */
-
-/* Tablets and medium screens (768px - 1024px) */
-@media (max-width: 1024px) {
-  .daily-list {
-    height: auto; /* Adjust height for smaller screens */
-    padding: 40px 20px;
-  }
-
-  .view-menu-button {
-    font-size: 16px; /* Slightly smaller font size */
-    padding: 12px 24px; /* Adjust padding */
-  }
-
-  .modal-content {
-    width: 95%; /* Slightly smaller width */
-    max-height: 85vh; /* Adjust modal height */
-  }
-}
-
-/* Small screens and mobile devices (480px - 768px) */
+/* Responsivitate */
 @media (max-width: 768px) {
-  .view-menu-button {
-    font-size: 14px; /* Smaller font */
-    padding: 10px 20px;
-  }
-
   .modal-content {
-    width: 90%;
-    padding: 15px; /* Reduce padding */
-  }
-
-  .menu-cards {
-    flex-direction: column; /* Stack items vertically */
-    gap: 15px;
+    width: 95%;
+    padding: 15px;
   }
 
   .menu-list {
-    gap: 15px; /* Smaller gap for compact layout */
-  }
-}
-
-/* Extra small screens (max-width: 480px) */
-@media (max-width: 480px) {
-  .view-menu-button {
-    font-size: 12px; /* Small font size for tiny screens */
-    padding: 8px 16px;
-  }
-
-  .modal-content {
-    width: 95%; /* Full width */
-    padding: 10px;
-  }
-
-  .menu-list {
-    gap: 10px;
+    gap: 10px; /* Spațiu mai mic între carduri pe ecrane mici */
   }
 }

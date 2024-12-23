@@ -5,6 +5,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./TopDishes.css";
+import desktopImage from "../assets/top-dishes-img.jpg";
+import tabletImage from "../assets/dish-img-tablet.png";
+import mobileImage from "../assets/dish-img-mobile.png";
 
 const TopDishes = () => {
   const swiperRef = useRef(null); // Create a reference to the Swiper instance
@@ -14,74 +17,26 @@ const TopDishes = () => {
       name: "Gogoși cu ciocolată",
       description: "Delicioase cu ciocolată.",
       price: "10 lei",
-      image: "path/to/chocolate-donut.jpg",
     },
     {
       name: "Gogoși cu gem",
       description: "Gogoși pufoase cu gem de fructe.",
       price: "8 lei",
-      image: "path/to/jam-donut.jpg",
     },
-    {
-      name: "Gogoși simple",
-      description: "Gogoși clasice.",
-      price: "6 lei",
-      image: "path/to/plain-donut.jpg",
-    },
-    {
-      name: "Gogoși regale",
-      description: "Gogoși de lux.",
-      price: "12 lei",
-      image: "path/to/plain-donut.jpg",
-    },
-    {
-      name: "Gogoși simple",
-      description: "Gogoși clasice.",
-      price: "6 lei",
-      image: "path/to/plain-donut.jpg",
-    },
-    {
-      name: "Gogoși regale",
-      description: "Gogoși de lux cu martipan.",
-      price: "12 lei",
-      image: "path/to/plain-donut.jpg",
-    },
+    { name: "Gogoși simple", description: "Gogoși clasice.", price: "6 lei" },
+    { name: "Gogoși regale", description: "Gogoși de lux.", price: "12 lei" },
     {
       name: "Gogoși cu ciocolată",
-      description: "Delicioase gogoși cu ciocolată.",
+      description: "Delicioase cu ciocolată.",
       price: "10 lei",
-      image: "path/to/chocolate-donut.jpg",
     },
     {
       name: "Gogoși cu gem",
-      description: "Gogoși cu gem de fructe.",
+      description: "Gogoși pufoase cu gem de fructe.",
       price: "8 lei",
-      image: "path/to/jam-donut.jpg",
     },
-    {
-      name: "Gogoși simple",
-      description: "Gogoși clasice.",
-      price: "6 lei",
-      image: "path/to/plain-donut.jpg",
-    },
-    {
-      name: "Gogoși regale",
-      description: "Gogoși de luxe.",
-      price: "12 lei",
-      image: "path/to/plain-donut.jpg",
-    },
-    {
-      name: "Gogoși simple",
-      description: "Gogoși clasice.",
-      price: "6 lei",
-      image: "path/to/plain-donut.jpg",
-    },
-    {
-      name: "Gogoși regale",
-      description: "Gogoși de lux.",
-      price: "12 lei",
-      image: "path/to/plain-donut.jpg",
-    },
+    { name: "Gogoși simple", description: "Gogoși clasice.", price: "6 lei" },
+    { name: "Gogoși regale", description: "Gogoși de lux.", price: "12 lei" },
   ];
 
   return (
@@ -96,23 +51,30 @@ const TopDishes = () => {
           slidesPerView={4}
           slidesPerGroup={4}
           breakpoints={{
-            768: {
-              slidesPerView: 2,
-              slidesPerGroup: 2,
-            },
-            1024: {
-              slidesPerView: 4,
-              slidesPerGroup: 4,
-            },
+            1300: { slidesPerView: 4, slidesPerGroup: 4 },
           }}
         >
           {dishes.map((dish, index) => (
             <SwiperSlide key={index}>
               <div className="dish-card">
-                <img src={dish.image} alt={dish.name} className="dish-image" />
+                <picture>
+                  <source
+                    srcSet={tabletImage}
+                    media="(min-width: 768px) and (max-width: 1024px)"
+                  />
+                  <source srcSet={mobileImage} media="(max-width: 767px)" />
+                  <img
+                    src={desktopImage}
+                    alt={dish.name}
+                    className="dish-image"
+                  />
+                  console.log(desktopImage); console.log(tabletImage);
+                  console.log(mobileImage);
+                </picture>
+
                 <div className="overlay">
                   <h3>{dish.name}</h3>
-                  <h5>{dish.description}</h5>
+                  <p className="overlay-text">{dish.description}</p>
                   <strong>{dish.price}</strong>
                 </div>
               </div>
