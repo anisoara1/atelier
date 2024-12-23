@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import "./NavBar.css";
@@ -6,8 +6,13 @@ import config from "../config";
 import logo from "../assets/logo.jpg";
 
 export const NavBar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const location = useLocation();
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <header className="header">
@@ -18,7 +23,7 @@ export const NavBar = () => {
           </div>
           <h2>{config.siteName}</h2>
         </div>
-        <nav>
+        <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
           <ul className="nav-list">
             <li>
               <a href="#home">Acasa</a>
@@ -55,7 +60,30 @@ export const NavBar = () => {
             </li>
           )}
         </ul>
+        <button className="burger-menu" onClick={toggleMenu}>
+          ☰
+        </button>
       </div>
+      {isMenuOpen && (
+        <div className="overlay" onClick={toggleMenu}>
+          <div className="overlay-content">
+            <ul className="overlay-list">
+              <li>
+                <a href="#home" onClick={toggleMenu}>Acasa</a>
+              </li>
+              <li>
+                <a href="#about" onClick={toggleMenu}>Despre</a>
+              </li>
+              <li>
+                <a href="#menu" onClick={toggleMenu}>Meniu</a>
+              </li>
+              <li>
+                <a href="#contact" onClick={toggleMenu}>Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
     </header>
   );
 };
