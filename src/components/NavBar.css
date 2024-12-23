@@ -4,6 +4,7 @@
   padding: 1rem 0;
   color: var(--text-color);
   background-color: var(--secondary-color);
+  position: relative;
 }
 
 .container {
@@ -68,57 +69,89 @@
   transform: scale(1.05);
 }
 
+.burger-menu {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.overlay-content {
+  background: var(--secondary-color);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.overlay-list {
+  list-style: none;
+  padding: 0;
+}
+
+.overlay-list li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 24px;
+  display: block;
+  margin: 10px 0;
+}
+
+.overlay-list li a:hover {
+  text-decoration: underline;
+}
+
 /* Responsive Styling */
 @media (max-width: 1024px) {
   /* Tablet Screens */
   .container {
-    flex-wrap: wrap; /* Wrap elements */
-    justify-content: center; /* Center elements on smaller screens */
+    flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
   }
 
   .site-name {
-    margin-bottom: 1rem; /* Add spacing below logo and site name */
+    margin-bottom: 1rem;
   }
 
   .nav-list {
-    gap: 0.8rem; /* Adjust spacing between links */
+    display: none; /* Hide the navigation links on tablets and below */
   }
 
-  .nav-list li a {
-    font-size: 14px; /* Slightly smaller font for tablets */
-  }
-
-  .book-table-button {
-    padding: 8px 16px;
-    font-size: 14px; /* Adjust button size for tablets */
+  .burger-menu {
+    display: block; /* Show burger menu on tablets and below */
   }
 }
 
 @media (max-width: 768px) {
   /* Mobile Screens */
   .container {
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
 
   .nav-logo img {
-    width: 60px; /* Smaller logo size */
+    width: 60px;
     height: 60px;
   }
 
-  .nav-list {
-    flex-direction: column; /* Stack navigation links */
-    gap: 0.5rem;
-  }
-
-  .nav-list li a {
-    font-size: 14px; /* Adjust font size */
-  }
-
   .book-table-button {
-    width: 100%; /* Full width for smaller screens */
+    width: 100%;
     font-size: 14px;
     padding: 10px;
   }
