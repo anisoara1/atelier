@@ -3,7 +3,6 @@ import config from "../config";
 import "./Hero.css";
 import backgroundImage from "../assets/fresh-baked-donuts.jpg";
 import burger from "../assets/burger.jpg";
-import vector from "../assets/Vector 1.png";
 
 const Hero = () => (
   <section className="hero">
@@ -15,8 +14,7 @@ const Hero = () => (
         <button className="order-button">Comanda</button>
       </div>
     </div>
-    <div className="image-container">
-      <img src={vector} alt="vector" className="vector" />
+    <div className="hero-images">
       <div className="first-image">
         <img src={backgroundImage} alt="Fresh baked donuts" />
       </div>

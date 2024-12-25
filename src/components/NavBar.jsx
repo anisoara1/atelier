@@ -21,7 +21,7 @@ export const NavBar = () => {
           <div className="nav-logo">
             <img src={logo} alt="Logo" />
           </div>
-          <h2>{config.siteName}</h2>
+          <h2 className="title">{config.siteName}</h2>
         </div>
         <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
           <ul className="nav-list">
@@ -40,7 +40,7 @@ export const NavBar = () => {
           </ul>
         </nav>
         <button className="book-table-button">Cosul tau</button>
-        <ul>
+        <ul className="admin-link">
           {location.pathname === "/login" ? (
             <li>
               <Link to="/atelier">Home</Link>
@@ -65,21 +65,57 @@ export const NavBar = () => {
         </button>
       </div>
       {isMenuOpen && (
-        <div className="overlay" onClick={toggleMenu}>
+        <div className="overlay">
           <div className="overlay-content">
+            <button className="overlay-close" onClick={toggleMenu}>
+              <span className="overlay-close-btn">X</span>
+            </button>
             <ul className="overlay-list">
               <li>
-                <a href="#home" onClick={toggleMenu}>Acasa</a>
+                <a href="#home" onClick={toggleMenu}>
+                  Acasa
+                </a>
               </li>
               <li>
-                <a href="#about" onClick={toggleMenu}>Despre</a>
+                <a href="#about" onClick={toggleMenu}>
+                  Despre
+                </a>
               </li>
               <li>
-                <a href="#menu" onClick={toggleMenu}>Meniu</a>
+                <a href="#menu" onClick={toggleMenu}>
+                  Meniu
+                </a>
               </li>
               <li>
-                <a href="#contact" onClick={toggleMenu}>Contact</a>
+                <a href="#contact" onClick={toggleMenu}>
+                  Contact
+                </a>
               </li>
+              {location.pathname === "/login" ? (
+                <li>
+                  <Link to="/atelier" onClick={toggleMenu}>
+                    Home
+                  </Link>
+                </li>
+              ) : (
+                !isAuthenticated && (
+                  <li>
+                    <Link to="/login" onClick={toggleMenu}>
+                      Admin
+                    </Link>
+                  </li>
+                )
+              )}
+              {isAuthenticated && location.pathname !== "/login" && (
+                <li>
+                  <Link
+                    to={location.pathname === "/admin" ? "/atelier" : "/admin"}
+                    onClick={toggleMenu}
+                  >
+                    {location.pathname === "/admin" ? "Home" : "Admin"}
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>

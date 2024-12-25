@@ -1,5 +1,3 @@
-@import "../styles/variables.css";
-
 .header {
   padding: 1rem 0;
   color: var(--text-color);
@@ -11,9 +9,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: nowrap;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
+  gap: 1rem;
+  overflow: hidden;
 }
 
 .site-name {
@@ -28,8 +29,8 @@
 }
 
 .nav-logo img {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 
@@ -37,13 +38,13 @@
   list-style: none;
   display: flex;
   gap: 1rem;
+  flex-wrap: nowrap;
 }
 
 .nav-list li a {
   color: var(--text-color);
   text-decoration: none;
   font-weight: bold;
-  font-size: 16px;
 }
 
 .nav-list li a:hover {
@@ -51,16 +52,16 @@
 }
 
 .book-table-button {
-  max-width: 120px;
-  max-height: 40px;
+  max-width: 100px;
+  max-height: 36px;
   background-color: var(--button-background-color);
   color: var(--button-color);
-  padding: var(--button-padding);
+  padding: 0.5rem;
   border: var(--button-border);
   border-radius: var(--button-border-radius);
   box-shadow: var(--button-box-shadow);
-  font-size: 16px;
-  cursor: var(--button-cursor);
+  font-size: 14px;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
@@ -78,81 +79,203 @@
   color: var(--text-color);
 }
 
+/* Make admin-link discreet */
+.admin-link {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  font-size: 14px; /* Smaller font size */
+  font-weight: 400;
+  color: #555; /* Muted text color */
+}
+
+.admin-link li {
+  display: inline-block;
+}
+
+.admin-link a {
+  text-decoration: none;
+  color: inherit;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.admin-link a:hover {
+  color: white;
+  background-color: #333; /* Subtle highlight on hover */
+}
+
+.admin-link a:focus {
+  outline: none;
+  box-shadow: 0 0 3px #aaa; /* Accessibility focus indication */
+}
+
+/* Overlay Styles */
 .overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8); /* Dim the background */
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  transition: opacity 0.3s ease; /* Smooth fade effect */
+  overflow: hidden;
 }
 
 .overlay-content {
-  background: var(--secondary-color);
+  position: relative;
+  background: var(--secondary-color); /* Match your theme */
   padding: 20px;
   border-radius: 10px;
   text-align: center;
+  width: 90%; /* Fit small screens */
+  max-width: 400px; /* Limit the size on larger screens */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
 .overlay-list {
   list-style: none;
   padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.overlay-list li {
+  display: flex;
+  justify-content: center;
 }
 
 .overlay-list li a {
-  color: var(--text-color);
+  color: var(--text-color); /* Match the text theme */
   text-decoration: none;
-  font-size: 24px;
-  display: block;
-  margin: 10px 0;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Slight background for visibility */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .overlay-list li a:hover {
-  text-decoration: underline;
+  background-color: var(--button-background-color); /* Match button hover */
+  color: white; /* Invert text color */
+}
+
+.overlay-close {
+  color: var(--text-color);
+  font-size: 14px;
+  position: absolute;
+  padding: 7px 9px;
+  top: 10px;
+  right: 15px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  padding: 6px 9px;
+  background-color: white;
+}
+
+.overlay-close:hover {
+  color: white;
+  background-color: var(--button-background-color);
+  transform: scale(1.1);
+  transition: transform 0.3s ease, fill 0.3s ease;
 }
 
 /* Responsive Styling */
 @media (max-width: 1024px) {
   /* Tablet Screens */
   .container {
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-  }
-
-  .site-name {
-    margin-bottom: 1rem;
+    gap: 0.5rem;
   }
 
   .nav-list {
-    display: none; /* Hide the navigation links on tablets and below */
+    gap: 0.8rem;
   }
 
-  .burger-menu {
-    display: block; /* Show burger menu on tablets and below */
+  .nav-list li a {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .nav-logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .book-table-button {
+    font-size: 12px;
+    padding: 8px;
+    width: auto;
   }
 }
 
 @media (max-width: 768px) {
   /* Mobile Screens */
   .container {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
+  }
+
+  .nav-list li a {
+    font-size: 12px;
   }
 
   .nav-logo img {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+
+  .nav,
+  .admin-link {
+    display: none;
   }
 
   .book-table-button {
-    width: 100%;
-    font-size: 14px;
-    padding: 10px;
+    font-size: 12px;
+    padding: 6px;
+    width: auto;
+  }
+
+  .overlay-content {
+    width: 95%;
+    max-width: 350px;
+    padding: 15px;
+    border: 2px solid var(--button-background-color);
+  }
+
+  .overlay-list li a {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 0.8rem;
+  }
+
+  .book-table-button {
+    font-size: 10px;
   }
 }
