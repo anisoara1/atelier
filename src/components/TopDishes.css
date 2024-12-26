@@ -1,3 +1,4 @@
+/* Stiluri generale */
 .top-dishes {
   padding: var(--section-padding);
   background-color: var(--secondary-color);
@@ -13,15 +14,16 @@
 }
 
 .swiper-container {
+  padding: 0 20px; /* Ajustare padding pentru ecrane mici */
   width: 100%;
 }
 
 .dish-card {
-  width: 298px;
-  height: 298px;
-  border-radius: 20px;
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
   overflow: hidden;
   margin: 0 auto;
+  width: 100%; /* Cardurile ocupă toată lățimea containerului */
 }
 
 .dish-image {
@@ -29,60 +31,83 @@
   height: auto;
   display: block;
 }
+
 picture {
   display: block;
 }
 
-.overlay {
+.top-dishes-overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4); /* Fundal mai opac pentru lizibilitate */
   color: white;
   text-align: center;
   padding: 10px;
+  border-bottom-right-radius: 40px;
 }
 
-.overlay h3 {
+.top-dishes-overlay h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 16px; /* Dimensiune mai mică pentru titluri */
   padding: 0;
 }
 
 .overlay-text {
   font-family: "Inter", sans-serif;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: 12px; /* Dimensiune mai mică pentru text */
+  line-height: 1.4;
   margin: 0;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
-.overlay .price {
+.top-dishes-overlay .price {
   font-weight: bold;
+  font-size: 14px; /* Dimensiune mai mică pentru preț */
 }
 
 .swiper-container {
   position: relative;
 }
 
+/* General styles for the navigation arrows */
 .swiper-button-next,
 .swiper-button-prev {
   z-index: 100;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 40px;
-  color: darkorange;
+  width: 50px; /* Explicit width */
+  height: 50px; /* Explicit height */
+  color: orange;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(247, 246, 246, 0.8);
+  border-radius: 50%;
+  opacity: 1; /* Fully visible by default */
+  transition: color 0.3s ease, opacity 0.3s ease; /* Smooth transitions */
 }
 
-.swiper-button-next {
-  right: -30px;
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 40px;
 }
 
-.swiper-button-prev {
-  left: -30px;
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  transition: background-color 0.3s ease;
+  color: darkorange;
+  opacity: 0.9;
+}
+
+/* Icons inside the buttons */
+.swiper-button-next svg,
+.swiper-button-prev svg {
+  width: 10%; /* Resize SVG icons */
+  height: 10%;
 }
 
 .swiper-pagination {
@@ -93,9 +118,9 @@ picture {
 
 .swiper-pagination-bullet {
   background-color: orange !important;
-  width: 10px;
-  height: 10px;
-  margin: 0 5px;
+  width: 8px; /* Dimensiuni reduse */
+  height: 8px;
+  margin: 0 3px;
   opacity: 0.7;
 }
 
@@ -105,60 +130,53 @@ picture {
 }
 
 /* Media Queries */
-
-/* For tablets and medium screens (768px - 1024px) */
-@media (max-width: 1024px) {
-  .dishes-container {
-    gap: 15px; /* Reduce spacing between cards */
-  }
-
-  .dish-card {
-    width: 298px; /* Maintain original size */
-    height: 298px;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    font-size: 30px;
-    right: -20px;
-    left: -20px;
-  }
-}
-
-/* For small screens (480px - 768px) */
 @media (max-width: 768px) {
-  .dishes-container {
-    gap: 10px; /* Further reduce spacing */
-  }
-
-  .dish-card {
-    width: 208px; /* Maintain original size */
-    height: 208px;
+  .swiper-container {
+    padding: 0 10px;
   }
 
   .swiper-button-next,
   .swiper-button-prev {
-    font-size: 25px;
-    right: -15px;
-    left: -15px;
+    width: 30px;
+    height: 30px;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 20px;
   }
 }
 
-/* For extra small screens (max-width: 480px) */
 @media (max-width: 480px) {
-  .dishes-container {
-    gap: 5px; /* Minimal spacing for small screens */
+  .top-dishes-overlay h3 {
+    font-size: 12px; /* Dimensiuni mai mici pentru titluri */
   }
 
-  .dish-card {
-    width: 128px; /* Maintain original size */
-    height: 128px;
+  .overlay-text {
+    font-size: 8px; /* Text mai mic */
+  }
+
+  .top-dishes-overlay .price {
+    font-size: 8px; /* Dimensiuni mai mici pentru preț */
+  }
+
+  .swiper-container {
+    padding: 0 5px; /* Padding minim pe ecrane mici */
+  }
+
+  .swiper-pagination-bullet {
+    width: 6px; /* Dimensiuni mai mici pentru puncte */
+    height: 6px;
   }
 
   .swiper-button-next,
   .swiper-button-prev {
-    font-size: 20px;
-    right: -10px;
-    left: -10px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 14px;
   }
 }

@@ -30,94 +30,79 @@
   border-bottom-right-radius: 100px;
 }
 
-.text-container {
+.about-us-text-container {
   flex: 1; /* Take up 50% of the space */
   text-align: left;
 }
 
-.text-container h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.about-us-text-container h2 {
+  font-size: 1.9rem;
+  margin: 0 0 20px 0;
 }
 
-.text-container p {
+.about-us-text-container p {
   font-size: 1rem;
   line-height: 1.6;
-  margin-bottom: 15px;
+  margin: 0 0 15px 0;
 }
 
 /* Media Queries */
 
-/* For tablets and medium screens (768px - 1024px) */
 @media (max-width: 1024px) {
-  .about-us-container {
-    flex-direction: column; /* Stack content vertically */
-    align-items: center;
-    text-align: center; /* Center-align text */
-  }
-
-  .image-container {
-    width: 100%;
-    max-width: 450px; /* Limit max width of the image */
-    margin-bottom: 20px; /* Add spacing below image */
-  }
-
-  .text-container {
-    width: 100%;
-  }
-
-  .text-container h2 {
-    font-size: 1.8rem; /* Slightly smaller font */
-  }
-
-  .text-container p {
-    font-size: 0.95rem; /* Slightly smaller font */
-  }
-}
-
-/* For small screens (480px - 768px) */
-@media (max-width: 768px) {
-  .about-us-container {
-    flex-direction: column; /* Stack content vertically */
-    align-items: center;
-    text-align: center; /* Center-align text */
-  }
-
-  .image-container {
-    width: 100%;
-    max-width: 350px; /* Reduce max width of the image */
-    margin-bottom: 20px;
-  }
-
-  .text-container h2 {
-    font-size: 1.6rem; /* Smaller font size for headings */
-  }
-
-  .text-container p {
-    font-size: 0.9rem; /* Smaller font size for paragraphs */
-  }
-}
-
-/* For extra small screens (max-width: 480px) */
-@media (max-width: 480px) {
-  .about-us-container {
-    flex-direction: column; /* Stack content vertically */
-    align-items: center;
+  .about-us {
+    display: block;
+    padding: 20px 10px;
     text-align: center;
   }
 
   .image-container {
-    width: 100%;
-    max-width: 300px; /* Further reduce image size */
-    margin-bottom: 15px;
+    display: none; /* Ascundem containerul imaginii */
   }
 
-  .text-container h2 {
-    font-size: 1.4rem; /* Reduce font size further */
+  .about-us {
+    background-image: url("../assets/atelier.jpg"); /* Setăm imaginea ca fundal */
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
-  .text-container p {
-    font-size: 0.85rem; /* Smaller font size for readability */
-    line-height: 1.4;
+  .about-us-text-container {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.3); /* Fundal semitransparent */
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: auto;
+  }
+
+  .about-us-text-container h2 {
+    font-size: 50px;
+    color: white;
+  }
+
+  .about-us-text-container p {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+}
+
+/* Stiluri pentru ecrane mici */
+@media (max-width: 768px) {
+  .about-us-text-container h2 {
+    font-size: 30px;
+  }
+
+  .about-us-text-container p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 450px) {
+  .about-us-text-container p:last-of-type {
+    display: none;
   }
 }

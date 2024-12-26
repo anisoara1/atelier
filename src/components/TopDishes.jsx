@@ -5,12 +5,10 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./TopDishes.css";
-import desktopImage from "../assets/top-dishes-img.jpg";
 import tabletImage from "../assets/dish-img-tablet.png";
-import mobileImage from "../assets/dish-img-mobile.png";
 
 const TopDishes = () => {
-  const swiperRef = useRef(null); // Create a reference to the Swiper instance
+  const swiperRef = useRef(null);
 
   const dishes = [
     {
@@ -41,63 +39,52 @@ const TopDishes = () => {
 
   return (
     <div className="dishes-container">
-      <h2>Top Dishes</h2>
+      <h2>Farfurii de top</h2>
       <div className="swiper-container">
         <Swiper
-          ref={swiperRef} // Attach swiper instance to the ref
+          ref={swiperRef}
           modules={[Navigation, Pagination]}
           pagination={{ clickable: true, dynamicBullets: false }}
-          spaceBetween={40}
+          spaceBetween={15}
           slidesPerView={4}
           slidesPerGroup={4}
           breakpoints={{
-            1300: { slidesPerView: 4, slidesPerGroup: 4 },
+            1024: { slidesPerView: 4, slidesPerGroup: 4 },
+            768: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 8 },
+            671: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 5 },
+            312: { slidesPerView: 2, slidesPerGroup: 2, spaceBetween: 5 },
+            0: { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 5 },
           }}
         >
           {dishes.map((dish, index) => (
             <SwiperSlide key={index}>
               <div className="dish-card">
-                <picture>
-                  <source
-                    srcSet={tabletImage}
-                    media="(min-width: 768px) and (max-width: 1024px)"
-                  />
-                  <source srcSet={mobileImage} media="(max-width: 767px)" />
-                  <img
-                    src={desktopImage}
-                    alt={dish.name}
-                    className="dish-image"
-                  />
-                  console.log(desktopImage); console.log(tabletImage);
-                  console.log(mobileImage);
-                </picture>
-
-                <div className="overlay">
+                <img src={tabletImage} alt={dish.name} className="dish-image" />
+                <div className="top-dishes-overlay">
                   <h3>{dish.name}</h3>
                   <p className="overlay-text">{dish.description}</p>
-                  <strong>{dish.price}</strong>
+                  <h3>{dish.price}</h3>
                 </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
-        {/* Custom Navigation Arrows */}
-        <span
+        <div
           className="swiper-button-prev"
-          onClick={() => swiperRef.current.swiper.slidePrev()} // Use slidePrev method
+          onClick={() => swiperRef.current.swiper.slidePrev()}
         >
-          <svg>
-            <use xlinkHref="/assets/icons.svg#icon-circle-left"></use>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M15 " />
           </svg>
-        </span>
-        <span
+        </div>
+        <div
           className="swiper-button-next"
-          onClick={() => swiperRef.current.swiper.slideNext()} // Use slideNext method
+          onClick={() => swiperRef.current.swiper.slideNext()}
         >
-          <svg>
-            <use xlinkHref="/assets/icons.svg#icon-circle-right"></use>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M9 " />
           </svg>
-        </span>
+        </div>
       </div>
     </div>
   );

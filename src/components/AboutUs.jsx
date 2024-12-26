@@ -16,7 +16,7 @@ const AboutUs = () => (
       </div>
 
       {/* Right Text Description */}
-      <div className="text-container">
+      <div className="about-us-text-container">
         <h2>{config.aboutUsTitle}</h2>
         <p>
           La {config.siteName}, ne mândrim cu oferirea celor mai delicioase
