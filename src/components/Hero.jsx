@@ -10,7 +10,7 @@ const Hero = () => (
       <h1>{config.heroText}</h1>
       <p>Descopera si comanda mancarea noastra delicioasa!</p>
       <div className="buttons">
-        <button className="menu-button">Meniu</button>
+        <button className="menu-btn">Meniu</button>
         <button className="order-button">Comanda</button>
       </div>
     </div>

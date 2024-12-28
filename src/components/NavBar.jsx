@@ -21,7 +21,7 @@ export const NavBar = () => {
           <div className="nav-logo">
             <img src={logo} alt="Logo" />
           </div>
-          <h2 className="title">{config.siteName}</h2>
+          <h1 className="title">{config.siteName}</h1>
         </div>
         <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
           <ul className="nav-list">

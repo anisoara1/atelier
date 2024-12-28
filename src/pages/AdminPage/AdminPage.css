@@ -8,6 +8,9 @@
 
 h1,
 h2 {
+  font-family: "Pacifico", serif;
+  font-weight: 400;
+  font-style: normal;
   text-align: center;
   color: var(--text-color);
 }

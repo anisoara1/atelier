@@ -24,9 +24,10 @@
 }
 
 .hero h1 {
-  font-family: David Libre;
+  font-family: "Pacifico", serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 70px;
-  font-weight: 700;
   text-align: left;
   line-height: 60px;
   padding: 0;
@@ -34,9 +35,10 @@
 }
 
 .hero-content p {
-  font-family: Inter;
-  font-size: 24px;
+  font-family: "Nothing You Could Do", serif;
   font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
   line-height: 32px;
   text-align: left;
   padding: 0;
@@ -50,12 +52,13 @@
 }
 
 .order-button,
-.menu-button {
-  max-width: 120px;
-  max-height: 40px;
+.menu-btn {
+  font-family: "Nothing You Could Do", serif;
+  font-weight: 400;
+  font-style: normal;
+  padding: 0.5rem;
   background-color: var(--button-background-color);
   color: var(--button-color);
-  padding: var(--button-padding);
   border: var(--button-border);
   border-radius: var(--button-border-radius);
   box-shadow: var(--button-box-shadow);
@@ -63,7 +66,7 @@
   transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.menu-button {
+.menu-btn {
   background-color: var(--text-color);
 }
 
@@ -72,7 +75,7 @@
   transform: scale(1.05);
 }
 
-.menu-button:hover {
+.menu-btn:hover {
   background-color: rgb(62, 62, 62);
   transform: scale(1.05);
 }
@@ -114,7 +117,7 @@
 }
 @media (max-width: 1300px) {
   .hero h1 {
-    font-size: 65px;
+    font-size: 60px;
   }
 }
 @media (max-width: 1024px) {
@@ -154,12 +157,18 @@
 
   .hero h1 {
     color: white;
-    font-size: 50px;
+    font-size: 55px;
   }
 
   .hero-content p {
     font-size: 28px;
     line-height: 22px;
+  }
+
+  .order-button,
+  .menu-btn {
+    padding: 0.5rem;
+    box-shadow: 0px 4px 6px rgba(169, 166, 166, 0.747);
   }
 }
 
@@ -175,8 +184,7 @@
   }
 
   .buttons button {
-    padding: 10px 15px;
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 

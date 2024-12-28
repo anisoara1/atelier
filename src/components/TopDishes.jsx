@@ -39,7 +39,7 @@ const TopDishes = () => {
 
   return (
     <div className="dishes-container">
-      <h2>Farfurii de top</h2>
+      <h1>Farfurii de top</h1>
       <div className="swiper-container">
         <Swiper
           ref={swiperRef}

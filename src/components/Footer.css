@@ -28,8 +28,10 @@
 
 .footer-contact p,
 .footer-social a {
+  font-family: "Pacifico", serif;
+  font-weight: 400;
+  font-style: normal;
   margin: 5px 0;
-  font-size: 16px;
 }
 
 .footer-contact p a {
@@ -65,20 +67,12 @@
     gap: 20px;
   }
 
+  .footer p {
+    font-size: 16px;
+  }
+
   .footer-logo img {
     width: 120px;
     height: 120px;
-  }
-
-  .footer-contact p,
-  .footer-social a {
-    font-size: 14px; /* Adjust font size for smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .footer-contact p,
-  .footer-social a {
-    font-size: 12px; /* Smaller font for very small screens */
   }
 }

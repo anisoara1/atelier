@@ -6,7 +6,7 @@ const dailyData = [
   {
     title: "Menu 1",
     description:
-      "A delicious menu with fresh ingredients.A tasty and hearty menu for any time of the day.",
+      "A delicious menu with fresh ingredients. any time of the day.",
     price: "25 lei",
     image: "path/to/menu1.jpg",
   },

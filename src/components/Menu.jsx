@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import config from "../config";
 import "./Menu.css";
 import dishImage from "../assets/menuDish.png";
@@ -158,42 +158,28 @@ const allMenuItems = [
     image: "path/to/plain-donut.jpg",
   },
 ];
+const LARGE_SCREEN_INITIAL_ITEMS = 6; // Număr de carduri inițial pentru ecrane mari
+const LARGE_SCREEN_LOAD_ITEMS = 4; // Număr de carduri încărcate pe ecrane mari
+const SMALL_SCREEN_INITIAL_ITEMS = 3; // Număr de carduri inițial pentru ecrane mici
+const SMALL_SCREEN_LOAD_ITEMS = 3; // Număr de carduri încărcate pe ecrane mici
 
 const Menu = () => {
-  const [visibleItems, setVisibleItems] = useState(6); // Initially 6 items for large screens
-  const [itemsPerPage, setItemsPerPage] = useState(6); // Default for large screens
+  const isSmallScreen = window.innerWidth < 1024;
+  const [visibleItems, setVisibleItems] = useState(
+    isSmallScreen ? SMALL_SCREEN_INITIAL_ITEMS : LARGE_SCREEN_INITIAL_ITEMS
+  );
 
-  useEffect(() => {
-    // Adjust the number of items per page based on the screen width
-    const handleResize = () => {
-      if (window.innerWidth <= 1024) {
-        setItemsPerPage(3); // For tablets and smaller screens, show 3 items per page
-      } else {
-        setItemsPerPage(6); // For larger screens, show 6 items per page
-      }
-    };
-
-    // Add resize event listener
-    window.addEventListener("resize", handleResize);
-
-    // Call the function initially to set the correct items per page
-    handleResize();
-
-    // Clean up event listener on component unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const loadMoreItems = () => {
-    setVisibleItems((prevVisibleItems) => prevVisibleItems + itemsPerPage); // Load based on itemsPerPage
+  const handleLoadMore = () => {
+    const additionalItems = isSmallScreen
+      ? SMALL_SCREEN_LOAD_ITEMS
+      : LARGE_SCREEN_LOAD_ITEMS;
+    setVisibleItems((prev) => prev + additionalItems);
   };
 
   return (
     <section className="menu">
-      <h2>{config.menuTitle}</h2>
+      <h1>{config.menuTitle}</h1>
       <div className="menu-container">
-        <div className="vertical-border"></div>
         {allMenuItems.slice(0, visibleItems).map((item, index) => (
           <div key={index} className="menu-item">
             <div className="image-card">
@@ -204,16 +190,16 @@ const Menu = () => {
               <h5>{item.description}</h5>
               <hr className="orange-line" />
               <div className="price-container">
-                <button className="order-button">Adauga</button>
+                <button className="menu-button">Adaugă</button>
                 <h4 className="price">{item.price}</h4>
               </div>
             </div>
           </div>
         ))}
       </div>
-      {/* Show "Load More" button if there are more items to load */}
+
       {visibleItems < allMenuItems.length && (
-        <button className="load-more-button" onClick={loadMoreItems}>
+        <button className="load-more-button" onClick={handleLoadMore}>
           Vezi meniuri
         </button>
       )}
