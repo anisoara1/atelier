@@ -19,8 +19,8 @@
 }
 
 .dish-card {
-  border-top-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  border-top-left-radius: 70px;
+  border-bottom-right-radius: 70px;
   overflow: hidden;
   margin: 0 auto;
   width: 100%; /* Cardurile ocupă toată lățimea containerului */
@@ -44,7 +44,7 @@ picture {
   color: white;
   text-align: center;
   padding: 10px;
-  border-bottom-right-radius: 40px;
+  border-bottom-right-radius: 70px;
 }
 
 .top-dishes-overlay h3 {
@@ -52,15 +52,14 @@ picture {
   font-weight: 400;
   font-style: normal;
   margin: 0;
-  font-size: 16px;
   padding: 0;
 }
 
 .overlay-text {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
-  font-size: 14px; /* Dimensiune mai mică pentru text */
   line-height: 1.4;
   margin: 0;
   padding: 5px 0;
@@ -137,12 +136,6 @@ picture {
 @media (max-width: 768px) {
   .swiper-container {
     padding: 0 10px;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    width: 30px;
-    height: 30px;
   }
 
   .swiper-button-next::after,

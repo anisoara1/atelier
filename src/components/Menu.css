@@ -51,7 +51,7 @@
 }
 
 .text-container {
-  padding: 10px;
+  margin: 10px;
   width: 67%; /* Two-thirds width for the text */
   display: flex;
   flex-direction: column;
@@ -68,8 +68,9 @@
 }
 
 .text-container h5 {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
   font-size: 16px;
   line-height: 20px;
@@ -92,8 +93,9 @@
 }
 
 .menu-button {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
   padding: 0.5rem;
   background-color: var(--button-background-color);
@@ -129,8 +131,9 @@
 }
 
 .load-more-button {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
   margin-top: 20px;
   background-color: var(--text-color);
@@ -165,7 +168,6 @@
   .text-container h5 {
     font-size: 20px; /* Font mai mare pentru descriere */
     line-height: 26px;
-    padding: 10px 15px;
   }
 
   .menu-button {
@@ -189,7 +191,6 @@
 
   .text-container h5 {
     font-size: 16px;
-    padding: 5px 10px;
   }
   .text-container {
     padding: 10px;

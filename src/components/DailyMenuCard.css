@@ -43,8 +43,9 @@
 }
 
 .daily-menu-card h5 {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
   font-size: 14px;
   margin: 0;
@@ -64,8 +65,9 @@
 }
 
 .daily-order-button {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
   background-color: var(--button-background-color);
   color: var(--button-color);

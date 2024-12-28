@@ -41,8 +41,9 @@
 }
 
 .about-us-text-container p {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
   font-size: 1rem;
   line-height: 1.6;

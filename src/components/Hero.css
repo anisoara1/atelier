@@ -35,8 +35,9 @@
 }
 
 .hero-content p {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
   font-size: 24px;
   line-height: 32px;
@@ -53,8 +54,9 @@
 
 .order-button,
 .menu-btn {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
   padding: 0.5rem;
   background-color: var(--button-background-color);

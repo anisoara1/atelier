@@ -42,8 +42,9 @@
 }
 
 .nav-list li a {
-  font-family: "Pacifico", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
   color: var(--text-color);
   text-decoration: none;
@@ -55,24 +56,38 @@
 }
 
 .book-table-button {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.5rem; /* Spațiere între text și iconiță */
+  font-family: "Josefin Sans", serif;
+  font-weight: 600;
   font-style: normal;
-  max-width: 100px;
-  max-height: 36px;
-  background-color: var(--button-background-color);
-  color: var(--button-color);
+  background-color: var(--button-background-color); /* Fundal portocaliu */
+  color: white; /* Text alb */
   padding: 0.5rem;
-  border: var(--button-border);
+  border: none;
   border-radius: var(--button-border-radius);
-  box-shadow: var(--button-box-shadow);
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .book-table-button:hover {
-  background-color: darkorange;
-  transform: scale(1.05);
+  background-color: darkorange; /* Schimbare pe hover */
+  transform: scale(1.05); /* Efect de mărire */
+}
+
+.cart-icon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+}
+
+.cart-icon svg {
+  width: 100%;
+  height: 100%;
 }
 
 .burger-menu {
@@ -101,8 +116,9 @@
 }
 
 .admin-link a {
-  font-family: "Nothing You Could Do", serif;
-  font-weight: 400;
+  font-family: "Josefin Sans", serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
   text-decoration: none;
   color: inherit;
@@ -237,14 +253,14 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 830px) {
   /* Mobile Screens */
   .container {
     gap: 0.5rem;
   }
 
   .header h1 {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
 
   .nav-list li a {
@@ -254,6 +270,25 @@
   .nav-logo img {
     width: 60px;
     height: 60px;
+  }
+
+  .book-table-button {
+    padding: 0.5em 1em;
+    background-color: rgba(201, 199, 199, 0.208);
+  }
+
+  .book-table-button:hover {
+    background-color: rgba(201, 199, 199, 0.449); /* Schimbare pe hover */
+    transform: scale(1.05); /* Efect de mărire */
+  }
+
+  .cart-icon {
+    color: darkorange;
+    display: inline-block;
+  }
+
+  .cart-text {
+    display: none;
   }
 
   .burger-menu {
