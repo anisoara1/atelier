@@ -1,23 +1,21 @@
 {
   "files": {
-    "main.css": "/atelier/static/css/main.af3964e0.css",
-    "main.js": "/atelier/static/js/main.47e04953.js",
+    "main.css": "/atelier/static/css/main.bf2a679c.css",
+    "main.js": "/atelier/static/js/main.b321a475.js",
     "static/js/488.519d3dc6.chunk.js": "/atelier/static/js/488.519d3dc6.chunk.js",
     "static/media/daily-img.png": "/atelier/static/media/daily-img.0655d63780c0997cb26b.png",
-    "static/media/top-dishes-img.jpg": "/atelier/static/media/top-dishes-img.1c39b4547ef937dd0ba4.jpg",
     "static/media/fresh-baked-donuts.jpg": "/atelier/static/media/fresh-baked-donuts.f608f9e24905bade9b3a.jpg",
     "static/media/dish-img-tablet.png": "/atelier/static/media/dish-img-tablet.797b824e6deae12fcffb.png",
     "static/media/logo.jpg": "/atelier/static/media/logo.51b275d3a8512abc170f.jpg",
     "static/media/menuDish.png": "/atelier/static/media/menuDish.cdc58848d4f0926fe61f.png",
-    "static/media/dish-img-mobile.png": "/atelier/static/media/dish-img-mobile.d1c9e75bd89bce836d55.png",
     "static/media/atelier.jpg": "/atelier/static/media/atelier.fae06e61bb8ff06cf6da.jpg",
     "index.html": "/atelier/index.html",
-    "main.af3964e0.css.map": "/atelier/static/css/main.af3964e0.css.map",
-    "main.47e04953.js.map": "/atelier/static/js/main.47e04953.js.map",
+    "main.bf2a679c.css.map": "/atelier/static/css/main.bf2a679c.css.map",
+    "main.b321a475.js.map": "/atelier/static/js/main.b321a475.js.map",
     "488.519d3dc6.chunk.js.map": "/atelier/static/js/488.519d3dc6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.af3964e0.css",
-    "static/js/main.47e04953.js"
+    "static/css/main.bf2a679c.css",
+    "static/js/main.b321a475.js"
   ]
 }
