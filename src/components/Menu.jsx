@@ -180,6 +180,7 @@ const Menu = () => {
     <section className="menu">
       <h1>{config.menuTitle}</h1>
       <div className="menu-container">
+        <span className="vertical-border"> </span>
         {allMenuItems.slice(0, visibleItems).map((item, index) => (
           <div key={index} className="menu-item">
             <div className="image-card">

@@ -16,7 +16,7 @@
 .menu-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Responsive grid layout */
-  gap: 20px; /* Space between the cards */
+  gap: 20px 60px;
   position: relative;
   justify-items: center;
 }
