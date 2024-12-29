@@ -145,18 +145,6 @@ picture {
 }
 
 @media (max-width: 480px) {
-  .top-dishes-overlay h3 {
-    font-size: 12px; /* Dimensiuni mai mici pentru titluri */
-  }
-
-  .overlay-text {
-    font-size: 8px; /* Text mai mic */
-  }
-
-  .top-dishes-overlay .price {
-    font-size: 8px; /* Dimensiuni mai mici pentru preț */
-  }
-
   .swiper-container {
     padding: 0 5px; /* Padding minim pe ecrane mici */
   }
@@ -168,12 +156,12 @@ picture {
 
   .swiper-button-next,
   .swiper-button-prev {
-    width: 20px;
-    height: 20px;
+    width: 50px;
+    height: 50px;
   }
 
   .swiper-button-next::after,
   .swiper-button-prev::after {
-    font-size: 14px;
+    font-size: 20px;
   }
 }

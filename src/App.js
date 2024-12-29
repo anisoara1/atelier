@@ -7,6 +7,8 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import PrivateRoute from "./components/PrivateRoute";
 import { store } from "./store";
 import { NavBar } from "./components/NavBar";
+import DailyMenu from "./components/DailyMenu";
+import DailyList from "./components/DailyList";
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
         <Router>
           <NavBar />
           <Routes>
-            <Route path="/atelier" element={<HomePage />} />
+            <Route path="/atelier" element={<HomePage />} />{" "}
+            {/* Homepage route */}
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/admin"
@@ -25,6 +28,8 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route path="/" element={<DailyMenu />} />
+            <Route path="/dailylist" element={<DailyList />} />
           </Routes>
         </Router>
       </Provider>

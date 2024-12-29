@@ -117,11 +117,7 @@
   object-fit: cover;
   display: block;
 }
-@media (max-width: 1300px) {
-  .hero h1 {
-    font-size: 60px;
-  }
-}
+
 @media (max-width: 1024px) {
   .hero {
     flex-direction: column;

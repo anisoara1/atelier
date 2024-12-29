@@ -193,6 +193,10 @@
     0.1
   ); /* Slight background for visibility */
   transition: background-color 0.3s ease, color 0.3s ease;
+
+  padding: 0.5rem;
+
+  border-radius: var(--button-border-radius);
 }
 
 .overlay-list li a:hover {
@@ -318,5 +322,11 @@
     font-style: normal;
     font-size: 16px;
     padding: 8px 12px;
+  }
+}
+
+@media (max-width: 490px) {
+  .header h1 {
+    font-size: 1.1rem;
   }
 }
