@@ -1,0 +1,85 @@
+/* src/components/Cart.css */
+.cart {
+  padding: var(--section-padding);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cart h2 {
+  font-size: 2rem;
+}
+
+.cart-items {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Responsive grid layout */
+  gap: 20px 60px;
+  position: relative;
+  justify-items: center;
+}
+
+.cart-item {
+  background: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--primary-color);
+  border-top-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.quantity-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-control button {
+  background-color: var(--button-background-color);
+  color: var(--button-color);
+  padding: 0.5rem;
+  border: var(--button-border);
+  border-radius: var(--button-border-radius);
+  box-shadow: var(--button-box-shadow);
+  cursor: var(--button-cursor);
+  transition: background-color 0.3s ease;
+}
+
+.quantity-control button:hover {
+  background-color: darkorange;
+  transform: scale(1.05);
+}
+
+.drink-selection {
+  margin-top: 20px;
+}
+
+.drink-selection label {
+  margin-right: 10px;
+}
+
+.delivery-form,
+.message-form {
+  margin-top: 20px;
+}
+
+.delivery-form input,
+.message-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--primary-color);
+  border-radius: var(--button-border-radius);
+  box-shadow: var(--button-box-shadow);
+}

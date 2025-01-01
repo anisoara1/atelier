@@ -1,4 +1,4 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const authSlice = createSlice({
   name: "auth",
@@ -13,10 +13,8 @@ const authSlice = createSlice({
   },
 });
 
+// Export the actions
 export const { loginSuccess, logout } = authSlice.actions;
 
-export const store = configureStore({
-  reducer: {
-    auth: authSlice.reducer,
-  },
-});
+// Export the reducer as default
+export default authSlice.reducer;

@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addProduct } from "../../redux/slices/productSlice";
 import "./AdminPage.css";
 
 export const AdminPage = () => {
+  const dispatch = useDispatch();
+  const { products, loading, error } = useSelector((state) => state.products);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({
     name: "",
     price: "",
     description: "",
     image: null,
+    category: "topDishes", // Default category
   });
   const [editingProduct, setEditingProduct] = useState(null);
 
@@ -30,28 +33,26 @@ export const AdminPage = () => {
     setNewProduct({ ...newProduct, image: e.target.files[0] });
   };
 
-  const handleAddProduct = (e) => {
+  const handleCategoryChange = (e) => {
+    setNewProduct({ ...newProduct, category: e.target.value });
+  };
+
+  const handleAddProduct = async (e) => {
     e.preventDefault();
-    if (editingProduct !== null) {
-      const updatedProducts = products.map((product, index) =>
-        index === editingProduct ? newProduct : product
-      );
-      setProducts(updatedProducts);
-      setEditingProduct(null);
-    } else {
-      setProducts([...products, newProduct]);
-    }
-    setNewProduct({ name: "", price: "", description: "", image: null });
+    dispatch(addProduct(newProduct));
+
+    setNewProduct({
+      name: "",
+      price: "",
+      description: "",
+      image: null,
+      category: "topDishes",
+    });
   };
 
   const handleEditProduct = (index) => {
     setEditingProduct(index);
     setNewProduct(products[index]);
-  };
-
-  const handleDeleteProduct = (index) => {
-    const updatedProducts = products.filter((_, i) => i !== index);
-    setProducts(updatedProducts);
   };
 
   return (
@@ -79,29 +80,44 @@ export const AdminPage = () => {
           onChange={handleInputChange}
         ></textarea>
         <input type="file" name="image" onChange={handleImageChange} />
+
+        <select
+          name="category"
+          value={newProduct.category}
+          onChange={handleCategoryChange}
+        >
+          <option value="topDishes">Top Dishes</option>
+          <option value="menus">Menus</option>
+          <option value="dailyMenu">Daily Menu</option>
+        </select>
+
         <button type="submit">
           {editingProduct !== null ? "Salvează modificările" : "Adaugă produs"}
         </button>
       </form>
       <h2>Produse existente</h2>
+      {loading && <p>Loading...</p>}
+      {error && <p>{error}</p>}
       <ul className="product-list">
         {products.map((product, index) => (
-          <li className="product-item" key={index}>
+          <li className="product-item" key={product.id || index}>
             <div className="product-info">
               <p>{product.name}</p>
               <p>{product.price} lei</p>
               <p>{product.description}</p>
+              <p>Categoria: {product.category}</p>
             </div>
             {product.image && (
               <img
-                src={URL.createObjectURL(product.image)}
+                src={`http://localhost:5000${product.image}`}
                 alt={product.name}
                 className="product-image"
               />
             )}
+
             <div className="product-actions">
               <button onClick={() => handleEditProduct(index)}>Editează</button>
-              <button onClick={() => handleDeleteProduct(index)}>Șterge</button>
+              <button>Șterge</button>
             </div>
           </li>
         ))}

@@ -74,7 +74,7 @@ const TopDishes = () => {
           onClick={() => swiperRef.current.swiper.slidePrev()}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M15 " />
+            <path d="M15 19L8 12l7-7" />
           </svg>
         </div>
         <div
@@ -82,7 +82,7 @@ const TopDishes = () => {
           onClick={() => swiperRef.current.swiper.slideNext()}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M9 " />
+            <path d="M9 5l7 7-7 7" />
           </svg>
         </div>
       </div>
