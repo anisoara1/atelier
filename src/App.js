@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { HomePage } from "./pages/HomePage/Homepage";
 import { AdminPage } from "./pages/AdminPage/AdminPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import PrivateRoute from "./components/PrivateRoute";
 import store from "./redux/store";
 import { NavBar } from "./components/NavBar";
-import DailyMenu from "./components/DailyMenu";
 import DailyList from "./components/DailyList";
 import CartPage from "./pages/CartPage/CartPage";
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
+
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, { ...item, quantity: 1 }]);
   };
+
   const updateQuantity = (item, quantity) => {
     setCartItems((prevItems) =>
       prevItems.map((i) =>
@@ -23,9 +24,11 @@ function App() {
       )
     );
   };
+
   const removeItem = (item) => {
     setCartItems((prevItems) => prevItems.filter((i) => i.name !== item.name));
   };
+
   return (
     <div className="App">
       <Provider store={store}>
@@ -55,7 +58,7 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route path="/" element={<DailyMenu />} />
+            <Route path="/" element={<HomePage addToCart={addToCart} />} />
             <Route path="/dailylist" element={<DailyList />} />
           </Routes>
         </Router>
