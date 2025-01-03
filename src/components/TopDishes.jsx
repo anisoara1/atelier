@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/slices/productSlice"; // Asigură-te că acest import este corect
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -9,14 +10,30 @@ import "./TopDishes.css";
 
 const TopDishes = () => {
   const swiperRef = useRef(null);
+  const dispatch = useDispatch();
 
   // Obține produsele din Redux
-  const { products } = useSelector((state) => state.products);
+  const { products, loading, error } = useSelector((state) => state.products);
 
   // Filtrarea produselor pentru categoria "topDishes"
   const topDishes = products.filter(
     (product) => product.category === "topDishes"
   );
+
+  // Încarcă produsele când componenta se montează
+  useEffect(() => {
+    if (products.length === 0) {
+      dispatch(fetchProducts());
+    }
+  }, [dispatch, products.length]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className="dishes-container">

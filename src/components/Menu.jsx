@@ -28,7 +28,7 @@ const Menu = () => {
   };
 
   return (
-    <section className="menu">
+    <section className="menu" id="menu">
       <h1>Meniuri</h1>
       <div className="menu-container">
         <span className="vertical-border"> </span>

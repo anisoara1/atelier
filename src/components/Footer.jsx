@@ -3,11 +3,11 @@ import "./Footer.css";
 import logo from "../assets/logo.jpg";
 
 const Footer = () => (
-  <footer className="footer">
+  <footer className="footer" id="contacts">
     <div className="footer-logo">
       <img src={logo} alt="Logo" />
     </div>
-    <div className="footer-contact">
+    <div className="footer-contact" id="contact">
       <p>Adresa: Strada Stadionului 11, Jibou 455200</p>
       <p>Telefon: 0747581863</p>
       <p>Email: atelier@gmail.com</p>

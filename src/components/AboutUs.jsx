@@ -4,7 +4,7 @@ import "./AboutUs.css";
 import atelier from "../assets/atelier.jpg";
 
 const AboutUs = () => (
-  <section className="about-us">
+  <section className="about-us" id="about">
     <div className="about-us-container">
       {/* Left Image */}
       <div className="image-container">

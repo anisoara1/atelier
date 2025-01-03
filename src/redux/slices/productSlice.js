@@ -97,6 +97,7 @@ const productSlice = createSlice({
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
+        state.products = state.products || [];
       })
       // Actualizare produs
       .addCase(updateProduct.pending, (state) => {

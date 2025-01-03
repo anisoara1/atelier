@@ -34,16 +34,18 @@ export const NavBar = () => {
         <nav className={`nav ${isMenuOpen ? "open" : ""}`}>
           <ul className="nav-list">
             <li>
-              <a href="#home">Acasa</a>
+              <Link to="/">Acasa</Link>
             </li>
             <li>
-              <a href="#about">Despre</a>
+              <Link to="#about">Despre</Link>
             </li>
             <li>
-              <a href="#menu">Meniu</a>
+              <Link to="#menu">Meniu</Link>
             </li>
             <li>
-              <a href="#contact">Contact</a>
+              <Link to="#contact" smooth={true} duration={500}>
+                Contact
+              </Link>
             </li>
           </ul>
         </nav>
