@@ -1,170 +1,21 @@
 import React, { useState } from "react";
-import config from "../config";
+import { useSelector } from "react-redux";
 import "./Menu.css";
-import dishImage from "../assets/menuDish.png";
-
-const allMenuItems = [
-  {
-    name: "Gogoși cu ciocolată",
-    description: "cu ciocolată.Delicioase gogoși umplute cu ciocolată.",
-    price: "10 lei",
-    image: "path/to/chocolate-donut.jpg",
-  },
-  {
-    name: "Gogoși cu gem",
-    description: "Gogoși pufoase cu gem de fructe.",
-    price: "8 lei",
-    image: "path/to/jam-donut.jpg",
-  },
-  {
-    name: "Gogoși simple",
-    description: "Gogoși clasice, perfecte pentru orice ocazie.",
-    price: "6 lei",
-    image: "path/to/plain-donut.jpg",
-  },
-
-  {
-    name: "Gogoși cu ciocolată",
-    description:
-      "Delicioase gogoși umplute cu ciocolată.Delicioase gogoși umplute .",
-    price: "10 lei",
-    image: "path/to/chocolate-donut.jpg",
-  },
-  {
-    name: "Gogoși cu gem",
-    description: "Gogoși pufoase cu gem de fructe.",
-    price: "8 lei",
-    image: "path/to/jam-donut.jpg",
-  },
-  {
-    name: "Gogoși simple",
-    description: "Gogoși clasice, perfecte pentru orice ocazie.",
-    price: "6 lei",
-    image: "path/to/plain-donut.jpg",
-  },
-  {
-    name: "Gogoși cu ciocolată",
-    description: "Delicioase gogoși umplute cu ciocolată.Delicioase ciocolată.",
-    price: "10 lei",
-    image: "path/to/chocolate-donut.jpg",
-  },
-  {
-    name: "Gogoși cu gem",
-    description: "Gogoși pufoase cu gem de fructe.",
-    price: "8 lei",
-    image: "path/to/jam-donut.jpg",
-  },
-  {
-    name: "Gogoși simple",
-    description: "Gogoși clasice, perfecte pentru orice ocazie.",
-    price: "6 lei",
-    image: "path/to/plain-donut.jpg",
-  },
-
-  {
-    name: "Gogoși cu ciocolată",
-    description: "Delicioase gogoși umplute cu ciocolată.Delicioase ciocolată.",
-    price: "10 lei",
-    image: "path/to/chocolate-donut.jpg",
-  },
-  {
-    name: "Gogoși cu gem",
-    description: "Gogoși pufoase cu gem de fructe.",
-    price: "8 lei",
-    image: "path/to/jam-donut.jpg",
-  },
-  {
-    name: "Gogoși simple",
-    description: "Gogoși clasice, perfecte pentru orice ocazie.",
-    price: "6 lei",
-    image: "path/to/plain-donut.jpg",
-  },
-  {
-    name: "Gogoși cu ciocolată",
-    description:
-      "Delicioase gogoși umplute cu ciocolată.Delicioase cu ciocolată.",
-    price: "10 lei",
-    image: "path/to/chocolate-donut.jpg",
-  },
-  {
-    name: "Gogoși cu gem",
-    description: "Gogoși pufoase cu gem de fructe.",
-    price: "8 lei",
-    image: "path/to/jam-donut.jpg",
-  },
-  {
-    name: "Gogoși simple",
-    description: "Gogoși clasice, perfecte pentru orice ocazie.",
-    price: "6 lei",
-    image: "path/to/plain-donut.jpg",
-  },
-
-  {
-    name: "Gogoși cu ciocolată",
-    description:
-      "Delicioase gogoși umplute cu ciocolată.Delicioase gogoși ciocolată.",
-    price: "10 lei",
-    image: "path/to/chocolate-donut.jpg",
-  },
-  {
-    name: "Gogoși cu gem",
-    description: "Gogoși pufoase cu gem de fructe.",
-    price: "8 lei",
-    image: "path/to/jam-donut.jpg",
-  },
-  {
-    name: "Gogoși simple",
-    description: "Gogoși clasice, perfecte pentru orice ocazie.",
-    price: "6 lei",
-    image: "path/to/plain-donut.jpg",
-  },
-  {
-    name: "Gogoși cu ciocolată",
-    description:
-      "Delicioase gogoși umplute cu ciocolată.Delicioase gogoși cu ciocolată.",
-    price: "10 lei",
-    image: "path/to/chocolate-donut.jpg",
-  },
-  {
-    name: "Gogoși cu gem",
-    description: "Gogoși pufoase cu gem de fructe.",
-    price: "8 lei",
-    image: "path/to/jam-donut.jpg",
-  },
-  {
-    name: "Gogoși simple",
-    description: "Gogoși clasice, perfecte pentru orice ocazie.",
-    price: "6 lei",
-    image: "path/to/plain-donut.jpg",
-  },
-
-  {
-    name: "Gogoși cu ciocolată",
-    description:
-      "Delicioase gogoși umplute cu ciocolată.Delicioase gogoși cu ciocolată.",
-    price: "10 lei",
-    image: "path/to/chocolate-donut.jpg",
-  },
-  {
-    name: "Gogoși cu gem",
-    description: "Gogoși pufoase cu gem de fructe.",
-    price: "8 lei",
-    image: "path/to/jam-donut.jpg",
-  },
-  {
-    name: "Gogoși simple",
-    description: "Gogoși clasice, perfecte pentru orice ocazie.",
-    price: "6 lei",
-    image: "path/to/plain-donut.jpg",
-  },
-];
-const LARGE_SCREEN_INITIAL_ITEMS = 6; // Număr de carduri inițial pentru ecrane mari
-const LARGE_SCREEN_LOAD_ITEMS = 4; // Număr de carduri încărcate pe ecrane mari
-const SMALL_SCREEN_INITIAL_ITEMS = 3; // Număr de carduri inițial pentru ecrane mici
-const SMALL_SCREEN_LOAD_ITEMS = 3; // Număr de carduri încărcate pe ecrane mici
 
 const Menu = () => {
+  // Obține produsele din Redux
+  const { products } = useSelector((state) => state.products);
+
+  // Filtrarea produselor pentru categoria "menus"
+  const menuItems = products.filter((product) => product.category === "menus");
+
+  // Configurare inițială pentru afișarea articolelor
+  const LARGE_SCREEN_INITIAL_ITEMS = 6;
+  const LARGE_SCREEN_LOAD_ITEMS = 4;
+  const SMALL_SCREEN_INITIAL_ITEMS = 3;
+  const SMALL_SCREEN_LOAD_ITEMS = 3;
   const isSmallScreen = window.innerWidth < 1024;
+
   const [visibleItems, setVisibleItems] = useState(
     isSmallScreen ? SMALL_SCREEN_INITIAL_ITEMS : LARGE_SCREEN_INITIAL_ITEMS
   );
@@ -178,13 +29,17 @@ const Menu = () => {
 
   return (
     <section className="menu">
-      <h1>{config.menuTitle}</h1>
+      <h1>Meniuri</h1>
       <div className="menu-container">
         <span className="vertical-border"> </span>
-        {allMenuItems.slice(0, visibleItems).map((item, index) => (
-          <div key={index} className="menu-item">
+        {menuItems.slice(0, visibleItems).map((item) => (
+          <div key={item._id} className="menu-item">
             <div className="image-card">
-              <img src={dishImage} alt={item.name} className="menu-image" />
+              <img
+                src={`http://localhost:5000${item.image}`}
+                alt={item.name}
+                className="menu-image"
+              />
             </div>
             <div className="text-container">
               <h3>{item.name}</h3>
@@ -192,16 +47,16 @@ const Menu = () => {
               <hr className="orange-line" />
               <div className="price-container">
                 <button className="menu-button">Adaugă</button>
-                <h4 className="price">{item.price}</h4>
+                <h4 className="price">{item.price} lei</h4>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {visibleItems < allMenuItems.length && (
+      {visibleItems < menuItems.length && (
         <button className="load-more-button" onClick={handleLoadMore}>
-          Vezi meniuri
+          Vezi mai multe
         </button>
       )}
     </section>

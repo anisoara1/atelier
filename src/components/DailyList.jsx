@@ -1,61 +1,47 @@
 import React from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate hook from react-router-dom
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "./DailyList.css";
-import menuImg from "../assets/menuDish.png";
-
-const dailyData = [
-  {
-    title: "Menu 1",
-    description: "A delicious menu with fresh ingredients.",
-    price: "25 lei",
-    image: "path/to/menu1.jpg",
-  },
-  {
-    title: "Menu 2",
-    description: "A tasty and hearty menu for any time of the day.",
-    price: "30 lei",
-    image: "path/to/menu2.jpg",
-  },
-  {
-    title: "Menu 3",
-    description: "A light menu perfect for a quick meal.",
-    price: "20 lei",
-    image: "path/to/menu3.jpg",
-  },
-];
 
 const DailyMenuList = () => {
-  const navigate = useNavigate(); // Create a navigate function using useNavigate
+  const navigate = useNavigate();
+
+  // Obține produsele din Redux
+  const { products } = useSelector((state) => state.products);
+
+  // Filtrarea produselor pentru categoria "dailyMenu"
+  const dailyMenus = products.filter(
+    (product) => product.category === "dailyMenu"
+  );
 
   const handleBack = () => {
-    navigate("/atelier"); // Navigate to the homepage route ("/atelier")
+    navigate("/atelier"); // Navighează înapoi la ruta "/atelier"
   };
 
   return (
     <div className="daily-menu-list">
-      {/* Back Arrow */}
       <button className="back-arrow" onClick={handleBack}>
         &larr;
       </button>
 
-      <h1>Meniul zilei </h1>
+      <h1>Meniul zilei</h1>
       <div className="menu-list">
-        {dailyData.map((menu, index) => (
-          <div key={index} className="daily-menu-card">
+        {dailyMenus.map((menu) => (
+          <div key={menu._id} className="daily-menu-card">
             <div className="daily-img-card">
               <img
-                src={menuImg}
+                src={`http://localhost:5000${menu.image}`}
                 alt={menu.title}
                 className="daily-menu-image"
               />
             </div>
             <div className="daily-text-container">
-              <h3>{menu.title}</h3>
+              <h3>{menu.name}</h3>
               <h5>{menu.description}</h5>
               <hr className="daily-orange-line" />
               <div className="menu-footer">
                 <button className="daily-order-button">Adaugă</button>
-                <p className="daily-price">{menu.price}</p>
+                <p className="daily-price">{menu.price} lei</p>
               </div>
             </div>
           </div>

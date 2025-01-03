@@ -1,41 +1,22 @@
 import React, { useRef } from "react";
+import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "./TopDishes.css";
-import tabletImage from "../assets/dish-img-tablet.png";
 
 const TopDishes = () => {
   const swiperRef = useRef(null);
 
-  const dishes = [
-    {
-      name: "Gogoși cu ciocolată",
-      description: "Delicioase cu ciocolată.",
-      price: "10 lei",
-    },
-    {
-      name: "Gogoși cu gem",
-      description: "Gogoși pufoase cu gem de fructe.",
-      price: "8 lei",
-    },
-    { name: "Gogoși simple", description: "Gogoși clasice.", price: "6 lei" },
-    { name: "Gogoși regale", description: "Gogoși de lux.", price: "12 lei" },
-    {
-      name: "Gogoși cu ciocolată",
-      description: "Delicioase cu ciocolată.",
-      price: "10 lei",
-    },
-    {
-      name: "Gogoși cu gem",
-      description: "Gogoși pufoase cu gem de fructe.",
-      price: "8 lei",
-    },
-    { name: "Gogoși simple", description: "Gogoși clasice.", price: "6 lei" },
-    { name: "Gogoși regale", description: "Gogoși de lux.", price: "12 lei" },
-  ];
+  // Obține produsele din Redux
+  const { products } = useSelector((state) => state.products);
+
+  // Filtrarea produselor pentru categoria "topDishes"
+  const topDishes = products.filter(
+    (product) => product.category === "topDishes"
+  );
 
   return (
     <div className="dishes-container">
@@ -56,14 +37,18 @@ const TopDishes = () => {
             0: { slidesPerView: 1, slidesPerGroup: 1, spaceBetween: 5 },
           }}
         >
-          {dishes.map((dish, index) => (
-            <SwiperSlide key={index}>
+          {topDishes.map((dish) => (
+            <SwiperSlide key={dish._id}>
               <div className="dish-card">
-                <img src={tabletImage} alt={dish.name} className="dish-image" />
+                <img
+                  src={`http://localhost:5000${dish.image}`}
+                  alt={dish.name}
+                  className="dish-image"
+                />
                 <div className="top-dishes-overlay">
                   <h3>{dish.name}</h3>
                   <p className="overlay-text">{dish.description}</p>
-                  <h3>{dish.price}</h3>
+                  <h3>{dish.price} lei</h3>
                 </div>
               </div>
             </SwiperSlide>
