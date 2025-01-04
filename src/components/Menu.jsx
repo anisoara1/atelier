@@ -36,7 +36,7 @@ const Menu = () => {
           <div key={item._id} className="menu-item">
             <div className="image-card">
               <img
-                src={`http://localhost:5000${item.image}`}
+                src={`https://atelier-server.onrender.com${item.image}`}
                 alt={item.name}
                 className="menu-image"
               />
