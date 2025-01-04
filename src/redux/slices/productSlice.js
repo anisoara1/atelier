@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:5000/";
+axios.defaults.baseURL = "https://atelier-server.onrender.com";
 
 // Async thunk pentru obținerea produselor
 export const fetchProducts = createAsyncThunk(
