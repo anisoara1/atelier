@@ -30,7 +30,7 @@ const DailyMenuList = () => {
           <div key={menu._id} className="daily-menu-card">
             <div className="daily-img-card">
               <img
-                src={`https://atelier-server.onrender.com${menu.image}`}
+                src={` http://localhost:5000${menu.image}`}
                 alt={menu.title}
                 className="daily-menu-image"
               />

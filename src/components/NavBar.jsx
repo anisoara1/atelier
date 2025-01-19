@@ -43,7 +43,7 @@ export const NavBar = () => {
               <Link to="#menu">Meniu</Link>
             </li>
             <li>
-              <Link to="#contact" smooth={true} duration={500}>
+              <Link to="#contact" smooth="true" duration={500}>
                 Contact
               </Link>
             </li>

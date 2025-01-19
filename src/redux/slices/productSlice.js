@@ -1,23 +1,19 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-axios.defaults.baseURL = "https://atelier-server.onrender.com";
+axios.defaults.baseURL = "http://localhost:5000";
 
-// Async thunk pentru obținerea produselor
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (_, thunkAPI) => {
     try {
       const response = await axios.get("/products");
-      console.log("Produse obținute:", response.data); // Log răspunsul serverului
-      return response.data; // Returnează lista de produse
+      return response.data;
     } catch (error) {
-      console.error("Eroare la obținerea produselor:", error.message); // Log eroarea
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-// Async thunk pentru adăugarea unui produs
 export const addProduct = createAsyncThunk(
   "products/addProduct",
   async (productData, thunkAPI) => {
@@ -32,7 +28,6 @@ export const addProduct = createAsyncThunk(
   }
 );
 
-// Async thunk pentru actualizarea unui produs
 export const updateProduct = createAsyncThunk(
   "products/updateProduct",
   async ({ id, updateData }, thunkAPI) => {
@@ -47,16 +42,13 @@ export const updateProduct = createAsyncThunk(
   }
 );
 
-// Async thunk pentru ștergerea unui produs
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
   async (productId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/products/${productId}`);
-      console.log("Produs șters:", response.data); // Log răspunsul serverului
-      return productId; // Returnăm ID-ul produsului șters
+      await axios.delete(`/products/${productId}`);
+      return productId;
     } catch (error) {
-      console.error("Eroare la ștergerea produsului:", error.message); // Log eroarea
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -69,10 +61,8 @@ const productSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {},
   extraReducers: (builder) => {
     builder
-      // Adăugare produs
       .addCase(addProduct.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -85,21 +75,18 @@ const productSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-
       .addCase(fetchProducts.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
         state.loading = false;
-        state.products = action.payload; // Stocăm produsele în starea locală
+        state.products = action.payload;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
-        state.products = state.products || [];
       })
-      // Actualizare produs
       .addCase(updateProduct.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -117,7 +104,6 @@ const productSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
-      // Ștergere produs
       .addCase(deleteProduct.pending, (state) => {
         state.loading = true;
         state.error = null;

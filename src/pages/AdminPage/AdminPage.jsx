@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
   addProduct,
@@ -11,28 +11,33 @@ import "./AdminPage.css";
 export const AdminPage = () => {
   const { products, loading, error } = useSelector((state) => state.products);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProducts()); // Obține produsele din baza de date la încărcare
-  }, [dispatch]);
+  const formRef = useRef(null);
+  const imageInputRef = useRef(null);
 
   const [product, setProduct] = useState({
     name: "",
     price: "",
     description: "",
-    image: "",
     category: "topDishes",
   });
-
+  const [imageFile, setImageFile] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditId] = useState(null);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
     setProduct((prevState) => ({
       ...prevState,
-      [name]: type === "file" ? files[0] : value,
+      [name]: type === "file" ? value : value,
     }));
+
+    if (type === "file") {
+      setImageFile(files[0]);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -41,6 +46,10 @@ export const AdminPage = () => {
     const formData = new FormData();
     for (const key in product) {
       formData.append(key, product[key]);
+    }
+
+    if (imageFile) {
+      formData.append("image", imageFile);
     }
 
     if (isEditing) {
@@ -52,12 +61,28 @@ export const AdminPage = () => {
     resetForm();
   };
 
+  const resetForm = () => {
+    setProduct({
+      name: "",
+      price: "",
+      description: "",
+      category: "topDishes",
+    });
+    setImageFile(null);
+    setIsEditing(false);
+    setEditId(null);
+
+    formRef.current.reset();
+    if (imageInputRef.current) {
+      imageInputRef.current.value = "";
+    }
+  };
+
   const handleEditProduct = (product) => {
     setProduct({
       name: product.name,
       price: product.price,
       description: product.description,
-      image: "",
       category: product.category,
     });
     setIsEditing(true);
@@ -67,18 +92,6 @@ export const AdminPage = () => {
   const handleDeleteProduct = async () => {
     await dispatch(deleteProduct(editId));
     resetForm();
-  };
-
-  const resetForm = () => {
-    setProduct({
-      name: "",
-      price: "",
-      description: "",
-      image: "",
-      category: "topDishes",
-    });
-    setIsEditing(false);
-    setEditId(null);
   };
 
   const categories = {
@@ -122,8 +135,9 @@ export const AdminPage = () => {
 
   return (
     <div className="admin-page">
-      <h1>Admin Dashboard</h1>
-      <form className="product-form" onSubmit={handleSubmit}>
+      <h1>Admin Page</h1>
+
+      <form className="product-form" onSubmit={handleSubmit} ref={formRef}>
         <input
           type="text"
           name="name"
@@ -144,7 +158,6 @@ export const AdminPage = () => {
           value={product.description}
           onChange={handleChange}
         />
-        <input type="file" name="image" onChange={handleChange} />
         <select
           name="category"
           value={product.category || "topDishes"}
@@ -154,6 +167,13 @@ export const AdminPage = () => {
           <option value="menus">Menus</option>
           <option value="dailyMenu">Daily Menu</option>
         </select>
+        <input
+          type="file"
+          name="image"
+          ref={imageInputRef}
+          onChange={handleChange}
+        />
+        {imageFile && <p>Imagine selectată: {imageFile.name}</p>}
         <button type="submit" disabled={loading}>
           {isEditing ? "Salvează produs" : "Adaugă produs"}
         </button>
@@ -167,7 +187,6 @@ export const AdminPage = () => {
           </button>
         )}
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
 
       <h2>Produse existente</h2>
       {loading && <p>Loading...</p>}
