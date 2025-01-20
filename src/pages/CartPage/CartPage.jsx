@@ -63,7 +63,7 @@ const CartPage = ({ updateQuantity }) => {
 
   const sendToWhatsApp = () => {
     const formattedMessage = encodeURIComponent(generateWhatsAppMessage());
-    const whatsappNumber = "0040747581863";
+    const whatsappNumber = "+40747581863";
     window.open(`https://wa.me/${whatsappNumber}?text=${formattedMessage}`);
   };
   return (
