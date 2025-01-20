@@ -1,7 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:5000";
-
+axios.defaults.baseURL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://atelier-server.onrender.com";
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (_, thunkAPI) => {
