@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addToCart } from "../redux/slices/cartSlice";
 import "./Menu.css";
 
 const Menu = () => {
-  // Obține produsele din Redux
   const { products } = useSelector((state) => state.products);
-
-  // Filtrarea produselor pentru categoria "menus"
   const menuItems = products.filter((product) => product.category === "menus");
 
-  // Configurare inițială pentru afișarea articolelor
+  const dispatch = useDispatch();
+
   const LARGE_SCREEN_INITIAL_ITEMS = 6;
   const LARGE_SCREEN_LOAD_ITEMS = 4;
   const SMALL_SCREEN_INITIAL_ITEMS = 3;
@@ -27,6 +26,10 @@ const Menu = () => {
     setVisibleItems((prev) => prev + additionalItems);
   };
 
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+  };
+
   return (
     <section className="menu" id="menu">
       <h1>Meniuri</h1>
@@ -36,7 +39,7 @@ const Menu = () => {
           <div key={item._id} className="menu-item">
             <div className="image-card">
               <img
-                src={` http://localhost:5000${item.image}`}
+                src={`http://localhost:5000${item.image}`}
                 alt={item.name}
                 className="menu-image"
               />
@@ -46,7 +49,12 @@ const Menu = () => {
               <h5>{item.description}</h5>
               <hr className="orange-line" />
               <div className="price-container">
-                <button className="menu-button">Adaugă</button>
+                <button
+                  className="menu-button"
+                  onClick={() => handleAddToCart(item)}
+                >
+                  Adaugă
+                </button>
                 <h4 className="price">{item.price} lei</h4>
               </div>
             </div>

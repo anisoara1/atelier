@@ -1,4 +1,3 @@
-/* src/components/Cart.css */
 .cart {
   padding: var(--section-padding);
   background-color: var(--secondary-color);
@@ -14,29 +13,14 @@
 }
 
 .cart-items {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Responsive grid layout */
-  gap: 20px 60px;
-  position: relative;
-  justify-items: center;
-}
-
-.cart-item {
-  background: var(--secondary-color);
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--primary-color);
-  border-top-left-radius: 40px;
-  border-bottom-right-radius: 40px;
-  overflow: hidden;
-  width: 100%;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cart-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.15);
+.cart-section,
+.cart-item {
+  display: flex;
+  flex-direction: row;
 }
 
 .quantity-control {
@@ -47,18 +31,22 @@
 }
 
 .quantity-control button {
-  background-color: var(--button-background-color);
-  color: var(--button-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  background-color: rgba(201, 199, 199, 0.208);
+  color: darkorange;
   padding: 0.5rem;
-  border: var(--button-border);
+  margin: 0;
+  border: none;
   border-radius: var(--button-border-radius);
-  box-shadow: var(--button-box-shadow);
-  cursor: var(--button-cursor);
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .quantity-control button:hover {
-  background-color: darkorange;
+  background-color: rgba(201, 199, 199, 0.449);
   transform: scale(1.05);
 }
 
@@ -71,15 +59,65 @@
 }
 
 .delivery-form,
-.message-form {
+.message-form,
+.delivery-time-form, /* nou */
+.phone-form {
+  /* nou */
   margin-top: 20px;
 }
 
 .delivery-form input,
-.message-form textarea {
+.message-form textarea,
+.delivery-time-form input, /* nou */
+.phone-form input {
+  /* nou */
   width: 100%;
   padding: 0.5rem;
   border: 1px solid var(--primary-color);
   border-radius: var(--button-border-radius);
   box-shadow: var(--button-box-shadow);
+}
+
+.total-price {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.drink-section {
+  display: flex;
+  gap: 20px;
+}
+
+.drink-image img {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.drink-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.drink-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.quantity-control button {
+  width: 30px;
+  height: 30px;
+}
+
+.drink-total {
+  margin-top: 20px;
+  font-weight: bold;
 }
