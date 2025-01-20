@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "./DailyList.css";
 
 const DailyMenuList = () => {
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:5000"
+      : "https://atelier-server.onrender.com";
   const navigate = useNavigate();
 
   // Obține produsele din Redux
@@ -30,7 +34,7 @@ const DailyMenuList = () => {
           <div key={menu._id} className="daily-menu-card">
             <div className="daily-img-card">
               <img
-                src={` http://localhost:5000${menu.image}`}
+                src={`${baseURL}${menu.image}`}
                 alt={menu.title}
                 className="daily-menu-image"
               />

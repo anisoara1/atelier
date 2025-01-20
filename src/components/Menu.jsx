@@ -4,6 +4,10 @@ import { addToCart } from "../redux/slices/cartSlice";
 import "./Menu.css";
 
 const Menu = () => {
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:5000"
+      : "https://atelier-server.onrender.com";
   const { products } = useSelector((state) => state.products);
   const menuItems = products.filter((product) => product.category === "menus");
 
@@ -39,7 +43,7 @@ const Menu = () => {
           <div key={item._id} className="menu-item">
             <div className="image-card">
               <img
-                src={`http://localhost:5000${item.image}`}
+                src={`${baseURL}${item.image}`}
                 alt={item.name}
                 className="menu-image"
               />

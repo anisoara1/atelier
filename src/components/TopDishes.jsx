@@ -9,6 +9,10 @@ import "swiper/css/pagination";
 import "./TopDishes.css";
 
 const TopDishes = () => {
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:5000"
+      : "https://atelier-server.onrender.com";
   const swiperRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -58,7 +62,7 @@ const TopDishes = () => {
             <SwiperSlide key={dish._id}>
               <div className="dish-card">
                 <img
-                  src={` http://localhost:5000${dish.image}`}
+                  src={`${baseURL}${dish.image}`}
                   alt={dish.name}
                   className="dish-image"
                 />
