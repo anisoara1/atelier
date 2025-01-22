@@ -1,46 +1,103 @@
 .cart {
-  padding: var(--section-padding);
+  padding: 2rem;
   background-color: var(--secondary-color);
   color: var(--text-color);
   text-align: center;
-  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.cart h2 {
-  font-size: 2rem;
+.field {
+  display: flex;
+  margin-bottom: 1rem;
+  flex-direction: column;
+  align-items: center;
 }
 
+.field label {
+  font-weight: bold;
+}
+
+.p-inputtext,
+.p-inputtextarea {
+  width: 60%;
+  padding: 0.5rem;
+  border-color: #ff9800;
+  border-radius: var(--button-border-radius);
+  box-shadow: var(--button-box-shadow);
+}
+
+.p-button {
+  background-color: #ff9800;
+  border-radius: var(--button-border-radius);
+  box-shadow: var(--button-box-shadow);
+  border: none;
+}
+
+.drinks-section,
+.cart-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+.drinks-item-image,
+.cart-item-image {
+  flex-shrink: 0;
+}
+
+.item-image {
+  max-width: 150px;
+  height: auto;
+}
+
+.drinks-items,
 .cart-items {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  gap: 15px;
+  align-items: flex-start;
 }
 
-.cart-section,
+.drink-item,
 .cart-item {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.drink-item-details,
+.cart-item-details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu-name {
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .quantity-control {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 10px;
 }
 
 .quantity-control button {
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  gap: 0.5rem;
+  font-size: medium;
   background-color: rgba(201, 199, 199, 0.208);
-  color: darkorange;
-  padding: 0.5rem;
-  margin: 0;
+  color: rgb(237, 158, 2);
+  padding: 0.5 0.8rem;
   border: none;
-  border-radius: var(--button-border-radius);
+  border-radius: 50%;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
@@ -50,74 +107,8 @@
   transform: scale(1.05);
 }
 
-.drink-selection {
-  margin-top: 20px;
-}
-
-.drink-selection label {
-  margin-right: 10px;
-}
-
-.delivery-form,
-.message-form,
-.delivery-time-form, /* nou */
-.phone-form {
-  /* nou */
-  margin-top: 20px;
-}
-
-.delivery-form input,
-.message-form textarea,
-.delivery-time-form input, /* nou */
-.phone-form input {
-  /* nou */
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid var(--primary-color);
-  border-radius: var(--button-border-radius);
-  box-shadow: var(--button-box-shadow);
-}
-
-.total-price {
-  margin-top: 20px;
-  font-size: 1.5rem;
+.menu-price {
+  font-size: 16px;
   font-weight: bold;
-}
-.drink-section {
-  display: flex;
-  gap: 20px;
-}
-
-.drink-image img {
-  width: 200px;
-  height: auto;
-  border-radius: 8px;
-}
-
-.drink-options {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.drink-option {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.quantity-control {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.quantity-control button {
-  width: 30px;
-  height: 30px;
-}
-
-.drink-total {
-  margin-top: 20px;
-  font-weight: bold;
+  color: #333;
 }
