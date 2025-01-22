@@ -31,7 +31,9 @@ const DailyMenuList = () => {
           <div key={menu._id} className="daily-menu-card">
             <div className="daily-img-card">
               <img
-                src={`${baseURL}${menu.image}`}
+                src={`${baseURL}${
+                  menu.image.startsWith("/") ? menu.image : `/${menu.image}`
+                }`}
                 alt={menu.title}
                 className="daily-menu-image"
               />
