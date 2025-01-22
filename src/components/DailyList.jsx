@@ -4,10 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./DailyList.css";
 
 const DailyMenuList = () => {
-  const baseURL =
-    process.env.NODE_ENV === "development"
-      ? process.env.REACT_APP_SERVER_URL_DEV
-      : process.env.REACT_APP_SERVER_URL_PROD;
+  const baseURL = process.env.REACT_APP_SERVER_URL_PROD;
   const navigate = useNavigate();
 
   // Obține produsele din Redux

@@ -62,7 +62,9 @@ const TopDishes = () => {
             <SwiperSlide key={dish._id}>
               <div className="dish-card">
                 <img
-                  src={`${baseURL}${dish.image}`}
+                  src={`${baseURL}${
+                    dish.image.startsWith("/") ? dish.image : `/${dish.image}`
+                  }`}
                   alt={dish.name}
                   className="dish-image"
                 />

@@ -43,7 +43,9 @@ const Menu = () => {
           <div key={item._id} className="menu-item">
             <div className="image-card">
               <img
-                src={`${baseURL}${item.image}`}
+                src={`${baseURL}${
+                  item.image.startsWith("/") ? item.image : `/${item.image}`
+                }`}
                 alt={item.name}
                 className="menu-image"
               />
