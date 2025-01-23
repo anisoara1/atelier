@@ -4,7 +4,6 @@ import { addToCart } from "../redux/slices/cartSlice";
 import "./Menu.css";
 
 const Menu = () => {
-  const baseURL = process.env.REACT_APP_SERVER_URL_PROD;
   const { products } = useSelector((state) => state.products);
   const menuItems = products.filter((product) => product.category === "menus");
 
@@ -40,9 +39,7 @@ const Menu = () => {
           <div key={item._id} className="menu-item">
             <div className="image-card">
               <img
-                src={`${baseURL}${
-                  item.image.startsWith("/") ? item.image : `/${item.image}`
-                }`}
+                src={`${process.env.REACT_APP_SERVER_URL_PROD}${item.image}`}
                 alt={item.name}
                 className="menu-image"
               />

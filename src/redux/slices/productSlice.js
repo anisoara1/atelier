@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-axios.defaults.baseURL = "https://atelier-server.onrender.com";
+
+axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL_PROD;
+
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (_, thunkAPI) => {

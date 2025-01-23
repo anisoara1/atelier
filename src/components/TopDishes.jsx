@@ -58,7 +58,7 @@ const TopDishes = () => {
             <SwiperSlide key={dish._id}>
               <div className="dish-card">
                 <img
-                  src={`https://atelier-server.onrender.com${dish.image}`}
+                  src={`${process.env.REACT_APP_SERVER_URL_PROD}${dish.image}`}
                   alt={dish.name}
                   className="dish-image"
                 />
