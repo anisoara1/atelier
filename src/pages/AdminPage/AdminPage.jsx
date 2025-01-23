@@ -119,7 +119,7 @@ export const AdminPage = () => {
               </div>
               {product.image && (
                 <img
-                  src={`http://localhost:5000${product.image}`}
+                  src={`https://atelier-server.onrender.com{product.image}`}
                   alt={product.name}
                   className="product-image"
                 />
