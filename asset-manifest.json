@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/atelier/static/css/main.f0b56bfb.css",
-    "main.js": "/atelier/static/js/main.81f20ab8.js",
+    "main.js": "/atelier/static/js/main.132b5c2c.js",
     "static/js/488.519d3dc6.chunk.js": "/atelier/static/js/488.519d3dc6.chunk.js",
     "static/media/daily-img.png": "/atelier/static/media/daily-img.0655d63780c0997cb26b.png",
     "static/media/primeicons.svg": "/atelier/static/media/primeicons.6ed59f962963a4a73af2.svg",
@@ -15,11 +15,11 @@
     "static/media/atelier.jpg": "/atelier/static/media/atelier.fae06e61bb8ff06cf6da.jpg",
     "index.html": "/atelier/index.html",
     "main.f0b56bfb.css.map": "/atelier/static/css/main.f0b56bfb.css.map",
-    "main.81f20ab8.js.map": "/atelier/static/js/main.81f20ab8.js.map",
+    "main.132b5c2c.js.map": "/atelier/static/js/main.132b5c2c.js.map",
     "488.519d3dc6.chunk.js.map": "/atelier/static/js/488.519d3dc6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f0b56bfb.css",
-    "static/js/main.81f20ab8.js"
+    "static/js/main.132b5c2c.js"
   ]
 }
