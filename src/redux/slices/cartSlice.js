@@ -1,6 +1,12 @@
+// cartSlice.js
 export const addToCart = (product) => ({
   type: "ADD_TO_CART",
   payload: product,
+});
+
+export const removeFromCart = (productId) => ({
+  type: "REMOVE_FROM_CART",
+  payload: productId,
 });
 
 const initialState = {
@@ -28,6 +34,16 @@ export const cartReducer = (state = initialState, action) => {
           cartItems: [...state.cartItems, { ...item, quantity: 1 }],
         };
       }
+
+    case "REMOVE_FROM_CART":
+      // Filtrăm produsele din coș pentru a elimina produsul cu id-ul dat
+      return {
+        ...state,
+        cartItems: state.cartItems.filter(
+          (item) => item._id !== action.payload
+        ),
+      };
+
     default:
       return state;
   }

@@ -9,6 +9,7 @@ import "swiper/css/pagination";
 import "./TopDishes.css";
 
 const TopDishes = () => {
+  const baseURL = process.env.REACT_APP_SERVER_URL_PROD;
   const swiperRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -58,9 +59,11 @@ const TopDishes = () => {
             <SwiperSlide key={dish._id}>
               <div className="dish-card">
                 <img
-                  src={`${process.env.REACT_APP_SERVER_URL_PROD}${dish.image}`}
-                  alt={dish.name}
-                  className="dish-image"
+                  src={`${baseURL}${
+                    dish.image.startsWith("/") ? dish.image : `/${dish.image}`
+                  }`}
+                  alt={dish.title || "Imagine indisponibilă"}
+                  className="daily-menu-image"
                 />
                 <div className="top-dishes-overlay">
                   <h3>{dish.name}</h3>

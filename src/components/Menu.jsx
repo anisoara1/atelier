@@ -4,9 +4,9 @@ import { addToCart } from "../redux/slices/cartSlice";
 import "./Menu.css";
 
 const Menu = () => {
+  const baseURL = process.env.REACT_APP_SERVER_URL_PROD;
   const { products } = useSelector((state) => state.products);
   const menuItems = products.filter((product) => product.category === "menus");
-
   const dispatch = useDispatch();
 
   const LARGE_SCREEN_INITIAL_ITEMS = 6;
@@ -20,28 +20,30 @@ const Menu = () => {
   );
 
   const handleLoadMore = () => {
-    const additionalItems = isSmallScreen
-      ? SMALL_SCREEN_LOAD_ITEMS
-      : LARGE_SCREEN_LOAD_ITEMS;
-    setVisibleItems((prev) => prev + additionalItems);
+    setVisibleItems(
+      (prev) =>
+        prev +
+        (isSmallScreen ? SMALL_SCREEN_LOAD_ITEMS : LARGE_SCREEN_LOAD_ITEMS)
+    );
   };
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
+    dispatch(addToCart(product)); // Adăugăm produsul în coș
   };
 
   return (
     <section className="menu" id="menu">
       <h1>Meniuri</h1>
       <div className="menu-container">
-        <span className="vertical-border"> </span>
         {menuItems.slice(0, visibleItems).map((item) => (
           <div key={item._id} className="menu-item">
             <div className="image-card">
               <img
-                src={`${process.env.REACT_APP_SERVER_URL_PROD}${item.image}`}
-                alt={item.name}
-                className="menu-image"
+                src={`${baseURL}${
+                  item.image.startsWith("/") ? item.image : `/${item.image}`
+                }`}
+                alt={item.title || "Imagine indisponibilă"}
+                className="daily-menu-image"
               />
             </div>
             <div className="text-container">
@@ -51,7 +53,7 @@ const Menu = () => {
               <div className="price-container">
                 <button
                   className="menu-button"
-                  onClick={() => handleAddToCart(item)}
+                  onClick={() => handleAddToCart(item)} // Adăugăm în coș
                 >
                   Adaugă
                 </button>

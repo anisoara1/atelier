@@ -112,3 +112,20 @@
   font-weight: bold;
   color: #333;
 }
+
+.cart-item-image {
+  position: relative;
+}
+
+.remove-item-button {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: rgba(201, 199, 199, 0.208);
+  border-radius: 50%;
+}

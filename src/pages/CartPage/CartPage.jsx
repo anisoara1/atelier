@@ -1,15 +1,17 @@
 import React, { useState, useCallback } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Calendar } from "primereact/calendar";
 import { Button } from "primereact/button";
 import "./CartPage.css";
 import sticleImage from "../../assets/sticle.webp";
-import logo from "../../assets/logo.jpg";
+import { removeFromCart } from "../../redux/slices/cartSlice";
 
 const CartPage = ({ updateQuantity }) => {
+  const baseURL = process.env.REACT_APP_SERVER_URL_PROD;
   const { cartItems } = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
   const [address, setAddress] = useState("");
   const [deliveryTime, setDeliveryTime] = useState(null);
   const [message, setMessage] = useState("");
@@ -78,6 +80,10 @@ const CartPage = ({ updateQuantity }) => {
   const drinkTotalPrice = calculateDrinkTotal();
   const grandTotal = menuTotalPrice + drinkTotalPrice;
 
+  const removeItemFromCart = (productId) => {
+    dispatch(removeFromCart(productId));
+  };
+
   return (
     <div className="cart">
       <h2>Coșul Tău</h2>
@@ -125,14 +131,40 @@ const CartPage = ({ updateQuantity }) => {
 
       <h3>Meniuri</h3>
       <div className="cart-section">
-        <div className="cart-item-image">
-          <img src={logo} alt="Meniu" className="item-image" />
-        </div>
         <div className="cart-items">
           {cartItems.map((item, index) => (
             <div key={index} className="cart-item">
               <div className="cart-item-details">
+                <div className="cart-item-image">
+                  {item.image ? (
+                    <img
+                      src={`${baseURL}${
+                        item.image.startsWith("/")
+                          ? item.image
+                          : `/${item.image}`
+                      }`}
+                      alt={item.name}
+                      className="item-image"
+                    />
+                  ) : (
+                    <img
+                      src="default-image.jpg"
+                      alt="Default"
+                      className="item-image"
+                    />
+                  )}
+
+                  {/* Butonul de ștergere */}
+                  <button
+                    className="remove-item-button"
+                    onClick={() => removeItemFromCart(item._id)}
+                  >
+                    X
+                  </button>
+                </div>
+
                 <span className="menu-name">{item.name}</span>
+
                 <div className="quantity-control">
                   <button onClick={() => handleMenuQuantityChange(index, -1)}>
                     -
@@ -142,12 +174,15 @@ const CartPage = ({ updateQuantity }) => {
                     +
                   </button>
                 </div>
+
                 <span className="menu-price">
                   {item.price * item.quantity} lei
                 </span>
               </div>
             </div>
           ))}
+
+          <div>Coșul este gol</div>
         </div>
       </div>
       <h4>Total meniuri: {menuTotalPrice} lei</h4>

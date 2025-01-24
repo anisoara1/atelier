@@ -1,22 +1,25 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addToCart } from "../redux/slices/cartSlice";
 import "./DailyList.css";
 
-const DailyMenuList = () => {
+const DailyList = () => {
   const baseURL = process.env.REACT_APP_SERVER_URL_PROD;
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  // Obține produsele din Redux
   const { products } = useSelector((state) => state.products);
-
-  // Filtrarea produselor pentru categoria "dailyMenu"
   const dailyMenus = products.filter(
     (product) => product.category === "dailyMenu"
   );
 
   const handleBack = () => {
-    navigate("/atelier"); // Navighează înapoi la ruta "/atelier"
+    navigate("/atelier");
+  };
+
+  const handleAddToCart = (menu) => {
+    dispatch(addToCart(menu)); // Adăugăm meniul în coș
   };
 
   return (
@@ -34,7 +37,7 @@ const DailyMenuList = () => {
                 src={`${baseURL}${
                   menu.image.startsWith("/") ? menu.image : `/${menu.image}`
                 }`}
-                alt={menu.title}
+                alt={menu.title || "Imagine indisponibilă"}
                 className="daily-menu-image"
               />
             </div>
@@ -43,7 +46,12 @@ const DailyMenuList = () => {
               <h5>{menu.description}</h5>
               <hr className="daily-orange-line" />
               <div className="menu-footer">
-                <button className="daily-order-button">Adaugă</button>
+                <button
+                  className="daily-order-button"
+                  onClick={() => handleAddToCart(menu)} // Adăugăm în coș
+                >
+                  Adaugă
+                </button>
                 <p className="daily-price">{menu.price} lei</p>
               </div>
             </div>
@@ -54,4 +62,4 @@ const DailyMenuList = () => {
   );
 };
 
-export default DailyMenuList;
+export default DailyList;
