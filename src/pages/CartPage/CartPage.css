@@ -1,82 +1,103 @@
 .cart {
-  padding: 2rem;
   background-color: var(--secondary-color);
   color: var(--text-color);
   text-align: center;
-  max-width: 1200px;
   margin: 0 auto;
+  padding: 20px;
+  max-width: 1200px;
+  box-sizing: border-box;
 }
 
-.field {
+.cart-section {
   display: flex;
-  margin-bottom: 1rem;
+  flex-wrap: wrap; /* Pentru a permite rearanjarea secțiunilor pe ecrane mici */
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cart-items {
+  flex: 0 1 60%; /* Ocupă 60% pe ecrane mari */
+  display: flex;
   flex-direction: column;
+  gap: 15px;
+}
+
+.form-container {
+  flex: 0 1 35%; /* Ocupă 35% pe ecrane mari */
+  background-color: #f7c9575e;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.drink-item {
+  display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
-.field label {
-  font-weight: bold;
-}
-
-.p-inputtext,
-.p-inputtextarea {
-  width: 60%;
-  padding: 0.5rem;
-  border-color: #ff9800;
-  border-radius: var(--button-border-radius);
-  box-shadow: var(--button-box-shadow);
-}
-
-.p-button {
-  background-color: #ff9800;
-  border-radius: var(--button-border-radius);
-  box-shadow: var(--button-box-shadow);
-  border: none;
-}
-
-.drinks-section,
-.cart-section {
+.drinks-items {
   display: flex;
-  align-items: flex-start;
-  gap: 20px;
+  flex-direction: column;
+  padding: 20px 0;
 }
-.drinks-item-image,
+.cart-item-details,
+.drink-item-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .cart-section {
+    flex-direction: column; /* Secțiunile devin verticale */
+    gap: 30px;
+  }
+
+  .cart-items,
+  .form-container {
+    flex: 1 1 100%; /* Secțiunile ocupă 100% lățime */
+  }
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .cart-item-image {
+  position: relative;
   flex-shrink: 0;
 }
 
 .item-image {
-  max-width: 150px;
+  max-width: 100px;
   height: auto;
+  border-radius: 8px;
 }
 
-.drinks-items,
-.cart-items {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: flex-start;
-}
-
-.drink-item,
-.cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-}
-
-.drink-item-details,
-.cart-item-details {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.remove-item-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: transparent;
+  border: none;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .menu-name {
   font-size: 16px;
   font-weight: bold;
+  color: #333;
 }
 
 .quantity-control {
@@ -91,11 +112,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  font-size: medium;
   background-color: rgba(201, 199, 199, 0.208);
   color: rgb(237, 158, 2);
-  padding: 0.5 0.8rem;
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -113,19 +131,39 @@
   color: #333;
 }
 
-.cart-item-image {
-  position: relative;
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 1rem;
 }
 
-.remove-item-button {
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  background-color: transparent;
+.field label {
+  font-weight: bold;
+  text-align: left;
+}
+
+.p-inputtext,
+.p-inputtextarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ff9800;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.p-button {
+  width: 100%;
+  background-color: #ff9800;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
   border: none;
-  color: red;
-  font-size: 20px;
+  padding: 10px 20px;
   cursor: pointer;
-  background-color: rgba(201, 199, 199, 0.208);
-  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.p-button:hover {
+  background-color: #e68a00;
 }
