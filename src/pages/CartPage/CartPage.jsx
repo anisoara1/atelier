@@ -24,6 +24,40 @@ const CartPage = ({ updateQuantity }) => {
     "2l": 0,
   });
 
+  const [selectedDrink, setSelectedDrink] = useState({});
+
+  const [customMessage] = useState("");
+
+  const sendToWhatsApp = () => {
+    let drinksMessage = Object.keys(drinkQuantities)
+      .filter((size) => drinkQuantities[size] > 0)
+      .map((size) => {
+        const drinkName = selectedDrink.name || "Nume băutură";
+        return `${drinkName} ${size}: ${drinkQuantities[size]} buc`;
+      })
+      .join("\n");
+
+    const message = `Comandă:
+  Adresă: ${address}
+  Telefon: ${phone}
+  Mesaj: ${customMessage}
+  Meniuri: ${cartItems
+    .map((item) => `${item.name} x${item.quantity}`)
+    .join("\n")}
+  Băuturi:\n${drinksMessage}
+  Total: ${grandTotal} lei`;
+
+    window.open(`https://wa.me/1234567890?text=${encodeURIComponent(message)}`);
+  };
+
+  const handleDrinkQuantityChange = (size, drinkName, increment) => {
+    setDrinkQuantities((prev) => ({
+      ...prev,
+      [size]: Math.max(0, (prev[size] || 0) + increment),
+    }));
+    setSelectedDrink({ name: drinkName });
+  };
+
   const handleMenuQuantityChange = (index, change) => {
     const updatedCartItems = [...cartItems];
     const updatedQuantity = updatedCartItems[index].quantity + change;
@@ -33,37 +67,6 @@ const CartPage = ({ updateQuantity }) => {
     if (updateQuantity) {
       updateQuantity(updatedCartItems);
     }
-  };
-
-  const validateFields = () => {
-    if (!address || !phone || !deliveryTime) {
-      alert("Te rugăm să completezi toate câmpurile obligatorii!");
-      return false;
-    }
-    return true;
-  };
-
-  const generateWhatsAppMessage = () => {
-    const menuDetails = cartItems
-      .map(
-        (item) =>
-          `• ${item.name} x${item.quantity} = ${item.price * item.quantity} lei`
-      )
-      .join("\n");
-    const drinkDetails = Object.entries(drinkQuantities)
-      .map(([size, qty]) => `• ${size} x${qty}`)
-      .filter((detail) => !detail.includes("x0"))
-      .join("\n");
-    const total = calculateMenuTotal() + calculateDrinkTotal();
-
-    return `Adresa: ${address}\nTelefon: ${phone}\nOra livrare: ${deliveryTime}\nMesaj: ${message}\n\nMeniuri:\n${menuDetails}\n\nBăuturi:\n${drinkDetails}\n\nTotal: ${total} lei`;
-  };
-
-  const sendToWhatsApp = () => {
-    if (!validateFields()) return;
-    const formattedMessage = encodeURIComponent(generateWhatsAppMessage());
-    const whatsappNumber = process.env.REACT_APP_WHATSAPP_NUMBER;
-    window.open(`https://wa.me/${whatsappNumber}?text=${formattedMessage}`);
   };
 
   const calculateMenuTotal = useCallback(() => {
@@ -114,8 +117,6 @@ const CartPage = ({ updateQuantity }) => {
                         className="item-image"
                       />
                     )}
-
-                    {/* Butonul de ștergere */}
                     <button
                       className="remove-item-button"
                       onClick={() => removeItemFromCart(item._id)}
@@ -146,11 +147,12 @@ const CartPage = ({ updateQuantity }) => {
           <h4>Total meniuri: {menuTotalPrice} lei</h4>
           <h3>Băuturi</h3>
           <div className="drinks-section">
-            <div className="drink-item">
+            <div className="drink-card">
               <div className="drinks-item-image">
+                <h5>Apă plată</h5>
                 <img src={waterDrink} alt="Meniu" className="item-image" />
               </div>
-              <div className="drinks-items">
+              <div className="drinks-list">
                 {Object.keys(drinkQuantities).map((size) => {
                   const drinkPrice = { "0.5l": 5, "1l": 8, "2l": 12 }[size];
                   const quantity = drinkQuantities[size];
@@ -161,10 +163,7 @@ const CartPage = ({ updateQuantity }) => {
                         <div className="quantity-control">
                           <button
                             onClick={() =>
-                              setDrinkQuantities((prev) => ({
-                                ...prev,
-                                [size]: Math.max(0, prev[size] - 1),
-                              }))
+                              handleDrinkQuantityChange(size, "Apă plată", -1)
                             }
                           >
                             -
@@ -172,10 +171,7 @@ const CartPage = ({ updateQuantity }) => {
                           <span className="quantity">{quantity}</span>
                           <button
                             onClick={() =>
-                              setDrinkQuantities((prev) => ({
-                                ...prev,
-                                [size]: prev[size] + 1,
-                              }))
+                              handleDrinkQuantityChange(size, "Apă plată", 1)
                             }
                           >
                             +
@@ -190,11 +186,12 @@ const CartPage = ({ updateQuantity }) => {
                 })}
               </div>
             </div>
-            <div className="drink-item">
+            <div className="drink-card">
               <div className="drinks-item-image">
+                <h5>Suc Cola</h5>
                 <img src={colaDrink} alt="Meniu" className="item-image" />
               </div>
-              <div className="drinks-items">
+              <div className="drinks-list">
                 {Object.keys(drinkQuantities).map((size) => {
                   const drinkPrice = { "0.5l": 5, "1l": 8, "2l": 12 }[size];
                   const quantity = drinkQuantities[size];
@@ -205,10 +202,7 @@ const CartPage = ({ updateQuantity }) => {
                         <div className="quantity-control">
                           <button
                             onClick={() =>
-                              setDrinkQuantities((prev) => ({
-                                ...prev,
-                                [size]: Math.max(0, prev[size] - 1),
-                              }))
+                              handleDrinkQuantityChange(size, "Suc Cola", -1)
                             }
                           >
                             -
@@ -216,10 +210,7 @@ const CartPage = ({ updateQuantity }) => {
                           <span className="quantity">{quantity}</span>
                           <button
                             onClick={() =>
-                              setDrinkQuantities((prev) => ({
-                                ...prev,
-                                [size]: prev[size] + 1,
-                              }))
+                              handleDrinkQuantityChange(size, "Suc Cola", 1)
                             }
                           >
                             +
@@ -234,11 +225,12 @@ const CartPage = ({ updateQuantity }) => {
                 })}
               </div>
             </div>
-            <div className="drink-item">
+            <div className="drink-card">
               <div className="drinks-item-image">
+                <h5>Suc de portocale</h5>
                 <img src={orangeDrink} alt="Meniu" className="item-image" />
               </div>
-              <div className="drinks-items">
+              <div className="drinks-list">
                 {Object.keys(drinkQuantities).map((size) => {
                   const drinkPrice = { "0.5l": 5, "1l": 8, "2l": 12 }[size];
                   const quantity = drinkQuantities[size];
@@ -249,10 +241,11 @@ const CartPage = ({ updateQuantity }) => {
                         <div className="quantity-control">
                           <button
                             onClick={() =>
-                              setDrinkQuantities((prev) => ({
-                                ...prev,
-                                [size]: Math.max(0, prev[size] - 1),
-                              }))
+                              handleDrinkQuantityChange(
+                                size,
+                                "Suc de portocale",
+                                -1
+                              )
                             }
                           >
                             -
@@ -260,10 +253,11 @@ const CartPage = ({ updateQuantity }) => {
                           <span className="quantity">{quantity}</span>
                           <button
                             onClick={() =>
-                              setDrinkQuantities((prev) => ({
-                                ...prev,
-                                [size]: prev[size] + 1,
-                              }))
+                              handleDrinkQuantityChange(
+                                size,
+                                "Suc de portocale",
+                                1
+                              )
                             }
                           >
                             +

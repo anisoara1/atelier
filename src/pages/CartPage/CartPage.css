@@ -3,62 +3,96 @@
   color: var(--text-color);
   text-align: center;
   margin: 0 auto;
-  padding: 20px;
-  max-width: 1200px;
   box-sizing: border-box;
 }
 
 .cart-section {
   display: flex;
-  flex-wrap: wrap; /* Pentru a permite rearanjarea secțiunilor pe ecrane mici */
-  align-items: flex-start;
+  flex-direction: row;
   justify-content: space-between;
-  gap: 20px;
+}
+/* Mărește distanțele dintre elemente pe ecrane mari */
+@media screen and (min-width: 1024px) {
+}
+
+/* Adaptează dimensiunile imaginilor pentru toate ecranele */
+.cart-item-image img,
+.drinks-item-image img {
+  height: auto;
+  border-radius: 8px;
 }
 
 .cart-items {
-  flex: 0 1 60%; /* Ocupă 60% pe ecrane mari */
+  width: 60%;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
 .form-container {
-  flex: 0 1 35%; /* Ocupă 35% pe ecrane mari */
+  width: 40%;
   background-color: #f7c9575e;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.drink-item {
+.drink-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  background-color: #eceef04d;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
 }
 
-.drinks-items {
+.drinks-list {
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 20px 0;
 }
+
+.drinks-item-image {
+  width: 300px;
+}
+
 .cart-item-details,
 .drink-item-details {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-around;
 }
 
-@media screen and (max-width: 768px) {
-  .cart-section {
-    flex-direction: column; /* Secțiunile devin verticale */
-    gap: 30px;
-  }
+.drink-item-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-  .cart-items,
-  .form-container {
-    flex: 1 1 100%; /* Secțiunile ocupă 100% lățime */
-  }
+.drinks-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.drinks-item-image h5 {
+  margin: 0 0 20px 0;
+}
+
+@media screen and (min-width: 768px) {
 }
 
 .cart-item {
@@ -73,13 +107,15 @@
 }
 
 .cart-item-image {
+  width: 250px;
   position: relative;
-  flex-shrink: 0;
 }
 
 .item-image {
-  max-width: 100px;
-  height: auto;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
   border-radius: 8px;
 }
 
