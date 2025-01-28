@@ -9,7 +9,7 @@ import "swiper/css/pagination";
 import "./TopDishes.css";
 
 const TopDishes = () => {
-  const baseURL = process.env.REACT_APP_SERVER_URL_DEV;
+  const baseURL = process.env.REACT_APP_SERVER_URL_PROD;
   const swiperRef = useRef(null);
   const dispatch = useDispatch();
 

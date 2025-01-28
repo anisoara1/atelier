@@ -119,7 +119,7 @@ export const AdminPage = () => {
               </div>
               {product.image && (
                 <img
-                  src={`${process.env.REACT_APP_SERVER_URL_DEV}${product.image}`}
+                  src={`${process.env.REACT_APP_SERVER_URL_PROD}${product.image}`}
                   alt={product.name}
                   className="product-image"
                 />

@@ -4,7 +4,7 @@ import { addToCart } from "../redux/slices/cartSlice";
 import "./Menu.css";
 
 const Menu = () => {
-  const baseURL = process.env.REACT_APP_SERVER_URL_DEV;
+  const baseURL = process.env.REACT_APP_SERVER_URL_PROD;
   const { products } = useSelector((state) => state.products);
   const menuItems = products.filter((product) => product.category === "menus");
   const dispatch = useDispatch();
