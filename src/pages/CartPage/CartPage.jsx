@@ -11,7 +11,7 @@ import waterDrink from "../../assets/water-drink.jpg";
 import { removeFromCart } from "../../redux/slices/cartSlice";
 
 const CartPage = ({ updateQuantity }) => {
-  const baseURL = process.env.REACT_APP_SERVER_URL_PROD;
+  const baseURL = process.env.REACT_APP_SERVER_URL_DEV;
   const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const [address, setAddress] = useState("");
