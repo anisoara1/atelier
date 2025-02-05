@@ -33,11 +33,17 @@
 
 .drink-item {
   display: flex;
-  flex-direction: row;
+  gap: 15px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  justify-content: flex-start;
+  align-content: space-around;
   align-items: center;
 }
 
-.drinks-items {
+.drinks-list {
   display: flex;
   flex-direction: column;
   padding: 20px 0;

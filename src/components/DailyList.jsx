@@ -5,7 +5,7 @@ import { addToCart } from "../redux/slices/cartSlice";
 import "./DailyList.css";
 
 const DailyList = () => {
-  const baseURL = process.env.REACT_APP_SERVER_URL_PROD;
+  const baseURL = process.env.REACT_APP_SERVER_URL_DEV;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

@@ -150,7 +150,7 @@ const CartPage = ({ updateQuantity }) => {
               <div className="drinks-item-image">
                 <img src={waterDrink} alt="Meniu" className="item-image" />
               </div>
-              <div className="drinks-items">
+              <div className="drinks-list">
                 {Object.keys(drinkQuantities).map((size) => {
                   const drinkPrice = { "0.5l": 5, "1l": 8, "2l": 12 }[size];
                   const quantity = drinkQuantities[size];
