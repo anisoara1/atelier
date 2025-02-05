@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/atelier/static/css/main.bf29c045.css",
-    "main.js": "/atelier/static/js/main.e1d789af.js",
+    "main.css": "/atelier/static/css/main.97c88183.css",
+    "main.js": "/atelier/static/js/main.5a3e17ff.js",
     "static/js/488.519d3dc6.chunk.js": "/atelier/static/js/488.519d3dc6.chunk.js",
     "static/media/daily-img.png": "/atelier/static/media/daily-img.0655d63780c0997cb26b.png",
     "static/media/primeicons.svg": "/atelier/static/media/primeicons.6ed59f962963a4a73af2.svg",
@@ -14,12 +14,12 @@
     "static/media/primeicons.woff2": "/atelier/static/media/primeicons.024b32cc7bf399b1a847.woff2",
     "static/media/atelier.jpg": "/atelier/static/media/atelier.fae06e61bb8ff06cf6da.jpg",
     "index.html": "/atelier/index.html",
-    "main.bf29c045.css.map": "/atelier/static/css/main.bf29c045.css.map",
-    "main.e1d789af.js.map": "/atelier/static/js/main.e1d789af.js.map",
+    "main.97c88183.css.map": "/atelier/static/css/main.97c88183.css.map",
+    "main.5a3e17ff.js.map": "/atelier/static/js/main.5a3e17ff.js.map",
     "488.519d3dc6.chunk.js.map": "/atelier/static/js/488.519d3dc6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bf29c045.css",
-    "static/js/main.e1d789af.js"
+    "static/css/main.97c88183.css",
+    "static/js/main.5a3e17ff.js"
   ]
 }
