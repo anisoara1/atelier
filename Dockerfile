@@ -1,5 +1,5 @@
 # Folosește o imagine oficială de Node.js
-FROM node:18.17.0 as build
+FROM node:18.17.0 AS build
 
 # Setează directorul de lucru
 WORKDIR /app

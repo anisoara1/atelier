@@ -9,12 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # 1. Checkout codul
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # 2. Setează Docker Buildx
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
+      # 3. Cache Docker layers
       - name: Cache Docker layers
         uses: actions/cache@v2
         with:
@@ -23,13 +26,23 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
+      # 4. Loghează-te în Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push Docker image
+      # 5. Construieste și împinge imaginea Docker pentru frontend
+      - name: Build and push frontend Docker image
         run: |
-          docker build -t elena125/atelier:latest .
-          docker push elena125/atelier:latest
+          cd frontend
+          docker build -t elena125/atelier-frontend:latest .
+          docker push elena125/atelier-frontend:latest
+
+      # 6. Construieste și împinge imaginea Docker pentru backend
+      - name: Build and push backend Docker image
+        run: |
+          cd backend
+          docker build -t elena125/atelier-backend:latest .
+          docker push elena125/atelier-backend:latest
