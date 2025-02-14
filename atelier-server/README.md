@@ -1,3 +1,0 @@
-# atelier-server
-
-Nodejs server
